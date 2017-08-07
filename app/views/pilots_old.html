@@ -1,0 +1,530 @@
+<div id="mapPanels" class='row' ng-show="panels">
+  <div class='col-md-5 content'>
+    <div class='row'>
+      <div class='col-md-12'>
+        <accordion close-others="onePanelAtATime">
+          <!-- <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title title">
+                <a href="" class="accordion-toggle">
+                  <span class="glyphicon glyphicon-info-sign pull-left" aria-hidden="true"></span>
+                  <h1>PILOT CONNECT</h1>
+                  <p>Connect and fly</p>
+                </a>
+              </h4>
+            </div>
+          </div> -->
+         <!--  <div class="panel panel-default">
+            <div class="button panel-heading" ng-click="pilotsLoaded && opensearch()">
+              <h4 class="panel-title title">
+                <a href="" class="accordion-toggle">
+                  <span class="glyphicon glyphicon-search pull-left" aria-hidden="true" ></span>
+                  SEARCH                 
+                </a>
+              </h4>
+            </div>
+          </div> -->
+          <accordion-group is-disabled="isPilotsListDisabled()" is-open="isFirstPanelOpen">
+            <accordion-heading>
+              <span class="glyphicon glyphicon-search pull-left" aria-hidden="true"></span>
+              SEARCH
+            </accordion-heading>
+            <div class='search panel-content' ng-controller="SearchController" >
+
+              <form name='search' >
+                <div class='form-group'>
+                  <input type='text' class='form-control' placeholder='Enter City or Pin Code' ng-model="searchParams.searchAddress"
+                  ng-autocomplete options=searchParams.searchAddressOptions details=searchParams.searchAddressDetails value="{{searchParams.searchAddress}}">
+                </div>
+
+                <div class='form-group'>
+                  <select class='form-control' ng-model="searchParams.searchAreaRadius"
+                  ng-options="searchArea.valueInMeters as searchArea.name for searchArea in areasOfSearch">
+                </select>
+              </div>
+              <div class="form-group filters">
+                <label class="col-md-5 " for="filter-category">Aircraft category</label>
+                <div class="col-md-7">
+                  <select class="form-control" id="filter-category" ng-model="category" ng-options="category for category in aircraftCategories">
+                    <option value=""></option>
+                  </select>
+                </div>
+              </div>
+
+              <div class='form-group filters' >
+                <label class="col-md-5 ">Safety Pilot</label>
+                <div class="col-md-7 filters">
+                  <span class="radiobtn "> 
+                    <label class=' '><input name="safe" type='radio' ng-model="safe" ng-value="safety.YES">Yes</label>
+                  </span>
+                  <span class="radiobtn" >
+                    <label class=' '><input name="safe"  type='radio' ng-model="safe" ng-value="safety.NO">No</label>
+                  </span>
+                </div>
+              </div>
+              <div class=' form-group pull-right button-group'>
+                <button type='button' class='btn btn-default' ng-click="reset()">RESET</button>
+                <button type='button' class='btn btn-primary' ng-disabled="isSearchButtonDisabled()" ng-click="searchPilots()">SEARCH</button>
+              </div>  
+            </form>
+          </div>
+        </accordion-group>
+
+        <!-- <accordion-group>
+          <accordion-heading>
+            <span class="glyphicon glyphicon-filter"></span>                         FILTER
+          </accordion-heading>
+          <div class='filter panel-content' ng-controller="FilterController">
+            <form class="form-horizontal">
+              <div class="form-group">
+                <div class="radio">
+                  <label class='radio'><input type='radio' ng-model="type" ng-value="" value="">All</label>
+                </div>
+                <div class="radio">
+                  <label><input type='radio' ng-model="type" ng-value="types.PERSONAL">Personal</label>
+                </div>
+                <div class="radio">
+                  <label class='radio'><input type='radio' ng-model="type" ng-value="types.BUSINESS">Business</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label" for="filter-category">Aircraft category</label>
+                <div class="col-md-9">
+                  <select class="form-control" id="filter-category" ng-model="category" ng-options="category for category in aircraftCategories">
+                    <option value=""></option>
+                  </select>
+                </div>
+              </div>
+              <div class="pull-right button-group">
+                <button type="button" class="btn btn-default" ng-click="reset()">RESET</button>
+              </div>
+            </form>
+          </div>
+        </accordion-group> -->
+
+        <!-- <accordion-group is-disabled="isPilotsListDisabled()">
+          <accordion-heading>
+            <span class="glyphicon glyphicon-align-justify"></span>
+            SHOW LIST
+            <div class="pull-right" ng-if="pilotsLoaded">{{totalpilotsCount}}</div>
+          </accordion-heading>
+          <div class="pilots-list panel-content">
+            <accordion>
+              <accordion-group ng-repeat="(id, user) in users" is-open="open" ng-click="showPilotMarker(user)">
+                <accordion-heading >
+                  <span class="pilot-list-item" >
+                    <span class="pull-left glyphicon" ng-class="{'glyphicon-chevron-down': open, 'glyphicon-chevron-right': !open}"></span>
+                    {{user.profile.name}}</span>
+                  </accordion-heading>
+                  <div>
+                    <p><b>Type:</b> {{user.profile.type}}</p>
+                    <p ng-if="user.profile.ratings"><b>Ratings:</b> {{user.profile.ratings}}</p>
+                    <p ng-if="user.profile.category"><b>Category:</b> {{user.profile.category}}</p>
+                    <p ng-if="user.profile.information"><b>Additional information:</b> {{user.profile.information}}</p>
+                    <p ng-if="user.profile.email"><b>Email:</b> <a href="mailto:{{user.profile.email}}">{{user.profile.email}}</a></p>
+                    <p ng-if="user.profile.phone"><b>Phone:</b> <a href="skype:{{user.profile.phone}}?call">{{user.profile.phone}}</a></p>
+                    <p ng-if="user.profile.skype"><b>Skype:</b> <a href="skype:{{user.profile.skype}}?call">{{user.profile.skype}}</a></p>
+                    <p ng-if="user.profile.facebook"><b>Facebook:</b>{{user.profile.facebook}}</></p>
+                    <p ng-if="user.profile.twitter"><b>Twitter:</b> {{user.profile.twitter}}</p>
+                    <p ng-if="user.profile.instagram"><b>Instagram:</b> {{user.profile.instagram}}</p>
+                    <p><b>Places:</b></p>
+                    <ul>
+                      <li ng-repeat="place in user.places">
+                        {{place.location}}
+                      </li>
+                    </ul>
+            
+                    <a href ng-if="userData.id !== id" ng-click="openSendMessageModal(id,user)">SEND MESSAGE</a>
+                  </div>
+                </accordion-group>
+              </accordion>
+            </div>
+          </accordion-group> -->
+        </accordion>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="map-wrapper">
+  <div id="map"></div>  
+
+  <!--map search side menu -->
+  <div id="searchMenu" class="{{sidenav}}" >
+    <div class="search-pilot item-input-wrapper" >
+      <div ng-controller="SearchController">
+        <div class='search panel-content' ng-controller="SearchController">
+
+          <form name='search'>
+            <div class='form-group'>
+             <label class="search-label">
+              <!-- <span class="icon glyphicon glyphicon-search" id="g-search-button"></span> -->
+              <input type='text' class='form-control' placeholder='Enter City or Pin Code' ng-model="searchParams.searchAddress"
+              ng-autocomplete options=searchParams.searchAddressOptions details=searchParams.searchAddressDetails >
+              <span class=" icon glyphicon glyphicon-remove" ng-click="closeSearch()" id="g-close-button"></span>
+            </label>
+          </div>
+
+          <div class='form-group'>
+            <select class='form-control' ng-model="searchParams.searchAreaRadius"
+            ng-options="searchArea.valueInMeters as searchArea.name for searchArea in areasOfSearch">
+          </select>
+        </div>
+        <div class="form-group filters">
+          <label class="col-md-5 " for="filter-category">Aircraft category</label>
+          <div class="col-md-7">
+            <select class="form-control" id="filter-category" ng-model="category" ng-options="category for category in aircraftCategories">
+              <option value=""></option>
+            </select>
+          </div>
+        </div>
+
+        <div class='form-group filters' >
+         <label class="col-md-5 ">Safety Pilot</label>
+         <div class="col-md-7 filters">
+          <span class="radiobtn "> 
+            <label class=' '><input name="safe" type='radio' ng-model="safe" ng-value="safety.YES">Yes</label>
+          </span>
+          <span class="radiobtn" >
+            <label class=' '><input name="safe"  type='radio' ng-model="safe" ng-value="safety.NO">No</label>
+          </span>
+        </div>
+      </div>
+
+      <div class=' form-group pull-right button-group'>
+        <button type='button' class='btn btn-default' ng-click="reset()">RESET</button>
+        <button type='button' class='btn btn-primary' ng-disabled="isSearchButtonDisabled()" ng-click="searchPilots(searchAddressDetails)">SEARCH</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+</div>
+<div id="searched-pilots" class="sidemenu search-menu">
+
+  <div  ng-repeat="(id, user) in filteredPilots " ng-click="showPilotMarker(user)">
+
+    <div class="search-pilots">
+      <div class="search-pilot-image">
+        <img ng-if="user.profile.image" class="pilot-image" data-ng-src="{{user.profile.image}}"/>
+        <img ng-if="!user.profile.image" class="pilot-image" ng-src="images/user-01.png"/>
+      </div>
+      <div class="search-pilot-info">
+        <div> Name : {{user.profile.name}}</div>
+        <div ng-if="user.places"> Location :
+          <ul ng-repeat="place in user.places">
+            <li>{{place.location}}</li>
+          </ul>
+        </div>
+        <div ng-if="user.place">Location :
+          <span>{{user.place.location}}</span>                    
+        </div>
+        <div> Aircraft :{{user.profile.category}}</div>
+        <div class="view-profile" ng-click="viewProfile(id,user)">View Profile</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<!--end map search side menu -->
+
+<!--map side menu -->
+<div id="mySidenav" class="{{sidenav}}">
+  <!-- Search Box -->
+  <div class="searchBox item-input-wrapper">
+    <form id="searchBox_form">
+      <input ng-model="pilotdata.profile.name" id="searchbox_input" type="search"/>
+    </form>
+    <div class="barbutton">
+      <button class="searchbutton icon glyphicon glyphicon-search"></button>
+      <button class="closebutton icon glyphicon glyphicon-remove" ng-click="closeNav()"></button>
+    </div>
+  </div>
+  <div class="sidemenu">
+    <!-- Picture and searcg Widget -->
+    <div class="picture_box">
+      <!-- <div class="mapImg" style=" background: url('images/placeholder.jpeg') no-repeat center;"> -->
+      <img ng-if="pilotdata.profile.image" class="mapImg" data-ng-src="{{pilotdata.profile.image}}"/>
+      <img ng-if="!pilotdata.profile.image" class="mapImg" ng-src="images/user-01.png"/>
+    </div>
+    <!-- Picture and searcg Widget -->
+    <!-- Widget description -->  
+    <div class="description">
+
+      <div class="des_info">
+        <span ng-if="pilotdata.profile.name">{{pilotdata.profile.name}}</span>
+        <span class="right">
+          <button ng-if="userData.id !== pilotdata.id" class="widget_action_button white" ng-click="openSendMessageModal(pilotdata.id,pilotdata)">
+            <div class="icon glyphicon glyphicon-envelope white"></div>
+            <div>MESSAGE</div>
+          </button></span>
+        </div>
+
+        <div class="des_rating" >
+          <div ng-if="reviews">
+            <span class="des_count">{{average | number : 1 }}</span>
+            <span class="des_stars">
+              <!-- <span star-rating height="16" ratings="rating" read-only="true" max-rating="5"></span
+              > -->
+              <span ng-repeat="i in filledStars track by $index">
+                <img src="images/star-fill-lg.png" style="height:16px;">
+              </span>
+              <span  ng-repeat="e in emptyStars track by $index">
+                <img src="images/star-empty-lg.png " style="height:16px;">
+              </span>
+            </span>
+            <span class="des_count">{{reviews.length}} Reviews</span>
+          </div>
+        </div>
+        <div ng-if="!reviews">
+          <span class="des_count">No reviews yet </span>
+        </div>
+      </div>
+      <!-- Widget description -->  
+      <!-- Widget action -->
+          <!-- <div class="widget_action">
+            <button class="widget_action_button">
+              <div class="icon glyphicon glyphicon-star"></div>
+              <div>SAVE</div>
+            </button>
+            <button class="widget_action_button">
+              <div class="icon glyphicon glyphicon-map-marker"></div>
+              <div >NEAR BY</div>
+            </button>
+            <button class="widget_action_button">
+              <div class="icon glyphicon glyphicon-send"></div>
+              <div>SEND</div>
+            </button>
+            <button class="widget_action_button">
+              <div class="icon glyphicon glyphicon-share-alt"></div>
+              <div>SHARE</div>
+            </button>
+            <button ng-if="userData.id !== pilotdata.id" class="widget_action_button" ng-click="openSendMessageModal(pilotdata.id,pilotdata)">
+              <div class="icon glyphicon glyphicon-envelope"></div>
+              <div  ng-click="openSendMessageModal(id,user)">MESSAGE</div>
+            </button> 
+          </div>  -->
+          <!-- Widget action -->
+          <!-- Widget information -->
+          <div class="widget-information">
+            <div class=" Information">
+              <div class="pilot_abstract" ng-if="pilotdata.profile.info">
+                <span>{{pilotdata.profile.info}}</span>
+              </div>
+              <table class="pilot_data">
+                <tr ng-if="pilotdata.place.location">
+                  <td><span tooltip ="location" class="icon glyphicon glyphicon-map-marker"></span>  </td>
+                  <td><info >{{pilotdata.place.location}}</info></td>
+                </tr>
+                <tr ng-if="pilotdata.profile.email">
+                  <td><span tooltip="email" class="icon glyphicon glyphicon-envelope"></span> </td>
+                  <td><info >{{pilotdata.profile.email}} </info></td>
+                </tr>
+                <tr ng-if="pilotdata.profile.phone">
+                  <td><span tooltip="phone" class="icon glyphicon glyphicon-earphone"></span> </td>
+                  <td><info >{{pilotdata.profile.phone}} </info></td>
+                </tr>
+                <tr ng-if="pilotdata.profile.skype">
+                  <td><span tooltip="skype" class="icon fa fa-skype"></span></td>
+                  <td><info > {{pilotdata.profile.skype}} </info></td>
+                </tr>
+                <tr ng--if="pilotdata.profile.facebook">
+                  <td><span tooltip="facebook" class="icon fa fa-facebook" ></span> </td>
+                  <td><info >{{pilotdata.profile.facebook}} </info></td>
+                </tr>
+                <tr ng-if="pilotdata.profile.twitter">
+                  <td><span tooltip="twitter" class="icon fa fa-twitter" ></span></td>
+                  <td><info>{{pilotdata.profile.twitter}} </info></td>
+                </tr >
+                <tr ng-if="pilotdata.profile.instagram">
+                  <td><span tooltip="instagram" class="icon fa fa-instagram"><span></td>
+                  <td><info >{{pilotdata.profile.instagram}}</info></td>
+                </tr>
+                <tr ng-if="pilotdata.profile.type">
+                  <td><span tooltip="type" class="icon glyphicon glyphicon-plane"></span></td>
+                  <td><info > {{pilotdata.profile.type}} </info></td>
+                </tr>
+                <tr ng-if="pilotdata.profile.ratings">
+                  <td><span tooltip="pilot rating" class="icon glyphicon glyphicon-star-empty"></span> </td>
+                  <td><info > {{pilotdata.profile.ratings}} </info></td>
+                </tr>
+                <tr  ng-if="pilotdata.profile.category">
+                  <td><span tooltip="category" class="icon glyphicon glyphicon-flag"></span></td>
+                  <td><info> {{pilotdata.profile.category}} </info></td>
+                </tr>
+                <!-- <tr ng-if="pilotdata.id">
+                  <td><span tooltip="id" class="icon glyphicon glyphicon-user"></span></td>
+                  <td><info > {{pilotdata.id}} </info></td>
+                </tr> -->
+              </table>
+            </div>
+          </div>
+          <!-- Widget information -->
+
+          <!-- Add Photo Widget -->
+          <div class="widget-add-photo">
+            <!-- <div class="view" ng-click="viewAllImagesmodal(images)" ng-if="images" >           -->
+            <div class="view" ng-if="images"  data-toggle="modal" data-target="#modal-fullscreen">          
+              <img class="viewImage" ng-src="{{images[0]}}"/>
+            </div>
+
+            <div class="view" ng-if="!images">          
+              <img class="viewImage" src="images/noImage.png"/>
+            </div>
+
+            <div class="add-photo" ng-click="openAddPhotoModal(pilotdata)">
+              <span class="icon glyphicon glyphicon-camera add-photo-icon"></span>
+              <span class="add-photo-text">Add a Photo</span>
+            </div>
+
+          </div>
+          <!-- Add Photo Widget -->
+
+          <!-- Widget Review -->
+          <div class="widget-review">
+            <div class="review" ng-if="reviews">
+              <div class="review_header" >Review Summary</div>
+              <div class="review_rating" >
+                <div class="review_rating_progressBar">
+                  <table >
+                    <tbody>
+                      <tr>
+                        <td class="star_number">5 </td>
+                        <td><span class="glyphicon glyphicon-star star"></span></td>
+                        <td>
+                          <div class="container review-bar">
+                            <div class="progress review-progress">
+                              <div class="progress-bar review-progress-bar" id="five_star" role="progressbar" aria-valuenow="five_star" aria-valuemin="0" aria-valuemax="100" style="width:{{five_star}}%">
+                              </div>
+                            </div>
+                          </div>
+                          <!-- <progress class="progressbar" value="22" max="100"></progress> -->
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="star_number">4 </td>
+                        <td><span class="glyphicon glyphicon-star star"></span></td>
+                        <td>
+                          <div class="container review-bar">
+                            <div class="progress review-progress">
+                              <div class="progress-bar review-progress-bar" id="four_star" role="progressbar" aria-valuenow="four_star" aria-valuemin="0" aria-valuemax="100" style="width:{{four_star}}%">                              
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="star_number">3 </td>
+                        <td><span class="glyphicon glyphicon-star star"></span></td>
+                        <td>
+                          <div class="container review-bar">
+                            <div class="progress review-progress">
+                              <div class="progress-bar review-progress-bar" id="three_star" role="progressbar" aria-valuenow="three_star" aria-valuemin="0" aria-valuemax="100" style="width:{{three_star}}%">
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="star_number">2 </td>
+                        <td><span class="glyphicon glyphicon-star star"></span></td>
+                        <td>
+                          <div class="container review-bar">
+                            <div class="progress review-progress">
+                              <div class="progress-bar review-progress-bar" id="two_star" role="progressbar" aria-valuenow="two_star" aria-valuemin="0" aria-valuemax="100" style="width:{{two_star}}%">
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="star_number">1 </td>
+                        <td><span class="glyphicon glyphicon-star star"></span></td>
+                        <td>
+                          <div class="container review-bar">
+                            <div class="progress review-progress">
+                              <div class="progress-bar review-progress-bar" id="one_star" role="progressbar" aria-valuenow="one_star" aria-valuemin="0" aria-valuemax="100" style="width:{{one_star}}%">
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div ng-if="!panels" class="rating_chart">
+                  <div class="rating_chart_display">{{average | number : 1 }}</div>
+                  <!-- <div class="rating_star_display" star-rating height="20" ratings="rating" read-only="true" max-rating="5"></div> -->
+                  <span class="rating_star_display">
+                    <span ng-repeat="x in filledStars track by $index">
+                      <img src="images/star-fill-lg.png" style="height:16px;">
+                    </span>
+                    <span  ng-repeat="y in emptyStars track by $index">
+                      <img src="images/star-empty-lg.png " style="height:16px;">
+                    </span>
+                  </span>
+                  <div class="rating_chart_reviews_count" ng-click="openAllReviews(pilotdata)">{{reviews.length}} Reviews</div>
+                </div>
+
+                <div  ng-if="panels"  class="rating_chart_2">
+                  <div class="rating_chart_display_2">{{average | number : 1 }}</div>
+                  <!-- <div class="rating_star_display" star-rating height="16" ratings="rating" read-only="true" max-rating="5"></div> -->
+                  <span class="rating_star_display">
+                    <span ng-repeat="a in filledStars track by $index">
+                      <img src="images/star-fill-lg.png" style="height:16px;">
+                    </span>
+                    <span  ng-repeat="b in emptyStars track by $index">
+                      <img src="images/star-empty-lg.png " style="height:16px;">
+                    </span>
+                  </span>
+                  <div class="rating_chart_reviews_count" ng-click="openAllReviews(pilotdata)">{{reviews.length}} Reviews</div>
+                </div>
+              </div>
+
+              <div ng-repeat="review in reviews | limitTo : 3 ">
+                <div class="read_Review" ng-if="review.review">                
+
+                  <img class="user-profile-photo review_img" ng-src="{{review.senderImage || 'images/user-01.png'}}"/>
+
+                  <div class="chat-list-name listtxt">{{review.review}}</div>
+
+
+                </div>
+              </div>
+            </div>
+            <div ng-if="userData.id !== pilotdata.id" class="writeReview">
+              <a href ng-click="openReviewModal(pilotdata)"><span class="write_review_text">WRITE A REVIEW</span></a>
+            </div>
+          </div>
+          <!-- widget Review -->
+        </div>
+      </div>
+
+    </div>
+    <!--end map side menu -->
+    <!-- Modal fullscreen -->
+    <div class="modal modal-fullscreen fade" id="modal-fullscreen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" backdrop= "static" keyboard="false">
+      <div class="modal-dialog modal-dialog-full">
+        <div class="modal-content">
+          <!-- <div class="modal-header">
+            <button type="button" class="close closePhoto" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          
+          </div> -->
+          <div class="modal-body modal-body-full">
+            <button type="button" class="close closePhoto" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <div class="viewContainer">
+
+              <img class="ImageinsideModal" ng-src="{{selectedimage}}"/>
+              <button class= "icon glyphicon glyphicon-chevron-left previous" ng-click="previous()"></button>
+              <button class="icon glyphicon glyphicon-chevron-right next" ng-click=next()></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+

@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>PLACES</h1>
+  <p ng-show="noPlaces()">No places added yet</p>
+  <table class="table places">
+    <tr ng-repeat="(id, place) in userPlaces" ng-class="{'info': isEdited(id)}">
+      <td>
+        {{place.location}}
+      </td>
+      <td class="button">
+        <button type="button" class="btn btn-primary" ng-click="editPlace(id)" ng-disabled="isEdited(id)">Edit</button>
+      </td>
+      <td class="button">
+        <button type="button" class="btn btn-danger" ng-click="deletePlace(id)" ng-disabled="isEdited(id)">Delete</button>
+      </td>
+    </tr>
+    <tr class="add">
+      <td>
+        <input type="text" class="form-control" placeholder="Enter part of address" ng-autocomplete
+               ng-model="address.location" details="address.details" options="address.options">
+      </td>
+      <td class="button">
+        <button type="button" class="btn btn-primary" ng-click="save(placeToEditId, address)" ng-disabled="isSaveDisabled()">
+          {{getButtonCaption()}}
+        </button>
+      </td>
+      <td class="button">
+        <button type="button" class="btn btn-danger" ng-click="dismiss()" ng-disabled="isDismissDisabled()">
+          Dismiss
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
+

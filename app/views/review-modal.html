@@ -1,0 +1,74 @@
+<div class="modal-body">
+
+    <div class="tile place-tile">
+        <img alt="" src="https://maps.gstatic.com/places-api/reviews-widget/images/ic_rate_review_white_2x_1.png"
+             class="write-review-icon">
+        <div class="action-close-mobile-container">
+            <div class="action-close-mobile">
+                <img alt=" Close "
+                     src="https://maps.gstatic.com/places-api/reviews-widget/images/ic_arrow_back_white_48dp_1.png">
+            </div>
+        </div>
+
+        <div class="action-publish-mobile-container">
+            <div class="action-publish-mobile"></div>
+        </div>
+        <div>
+            <div class="place-indent">
+                <div class="titles"> Rate &amp; review</div>
+                <div class="place-description">
+                    {{pilot.profile.info}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="main-fill" id="reviewBox">
+        <div class="mobile-scrollable">
+            <div class="tile user-tile">
+                <div>
+                    <img class="user-profile-photo-url" ng-src="{{userImg}}">
+                    <div class="user-indent">
+                        <div class="user-name">{{profile.name}}</div>
+                        <div class="user-notice">
+                            <div class="user-notice-long" ng-if="!deviceIsCordova">Your review will be posted publicly
+                                on the web.
+                            </div>
+                            <div class="user-notice-short" ng-if="deviceIsCordova">Posting Publicly</div>
+
+                            <a target="_blank" href="#" class="user-notice-learn-more"> Learn more </a>
+                        </div>
+                        <div class="star-rating-box">
+                            <span class="" star-rating ratings="userRating" read-only="false" max-rating="5"></span>
+                            <span class="user-notice-short empty-star-error error" ng-if="(userRating<1) && error">This field cannot be blank!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" mobile-scrollable-fill">
+                <div class="tile review-text-tile">
+                    <div class="review-text-indent">
+                        <textarea placeholder="Describe your experience" class="review-text"
+                                  ng-model="userReview"> </textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tile footer-tile">
+        <div class="footer-relative">
+            <div class="action-container">
+                <div class="action-close">
+                    <div class="quantum-button" role="button" ng-click="$close()">CANCEL
+                    </div>
+                </div>
+                <div class="action-publish">
+                    <div class="quantum-button" role="button" ng-click="postReview(userRating,userReview)">POST
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

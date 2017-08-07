@@ -1,0 +1,56 @@
+<div class="  text-center">
+    <div class="form-group ">
+        <div class="places-inputs" ng-repeat="(id, place) in userPlaces">
+            <input type="text" class=" " placeholder="Airport Name 1" ng-autocomplete
+                   ng-model="place.location" disabled>
+            <!--<a ng-click="removeAirport($index)" class="remove-airport">X</a>-->
+            <button type="button" ng-click="deletePlace(id)" class="remove-airport">X</button>
+            <!--<button type="button" class="btn btn-danger" ng-click="deletePlace(id)">Delete-->
+            <!--</button>-->
+        </div>
+    </div>
+    <div class="form-group places-inputs" ng-show="airport">
+      <!--  <input id="address" type="text" placeholder="Airport Name"
+               ng-autocomplete
+               ng-model="address.location"
+               details="address.details"
+               min-length="3"
+               options="address.options"
+               ng-keyup="$event.keyCode == 13 && selectFirst($event)">-->
+        <input id="form_airport" type="text"
+               placeholder="Airport Name"
+               ng-autocomplete
+               ng-model="address.location"
+               details="address.details"
+               options="address.options">
+
+        <button type="button add-btn" class="btn btn-primary"
+                ng-click="save(address)" ng-disabled="isSaveDisabled()">
+            ADD
+        </button>
+
+        <div>Ex: KPAO, PAO or Palo Alto</div>
+        <div ng-show="err.places" class="error">Please Select the Airport from List</div>
+    </div>
+
+    <div class="form-group ">
+        <button type="button" ng-click="addAirport()" class="add-airport">
+            + Add Airport
+        </button>
+    </div>
+    <div class="form-group ">
+        <div ng-show="err.airport" class="error">Please add a Airport first</div>
+    </div>
+</div>
+
+<div class="profile-footer">
+    <div class="form-group ">
+        <a ng-click="changestate(3)" class="btn next-section">
+            BACK
+        </a>
+        <button type="button" ng-click="createProfile()" class="btn CompleteProfile">
+            COMPLETE PROFILE
+        </button>
+
+    </div>
+</div>

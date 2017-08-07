@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="$close()">
+        <span aria-hidden="true">×</span>
+        <span class="sr-only">Close</span>
+    </button>
+</div>
+
+<div class="modal-body modal-simplelogin">
+
+    <form class="simpleLoginForm" novalidate name="forgotForm" ng-submit="forgotPass(user)">
+
+        <div class="item">
+            <input class="forminput" name="txtemail" type="user.email" ng-model="user.email" placeholder="Email"
+                   ng-minlength="5"
+                   ng-maxlength="30"
+                   required>
+        </div>
+
+        <div class="item">
+            <input type="submit" ng-disabled="forgotForm.$invalid" class="btn btn-primary btn-block" value="Reset password"/>
+        </div>
+    </form>
+</div>

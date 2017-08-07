@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--Optimizely script-->
+    <script src="//cdn.optimizely.com/js/8109260935.js"></script>
+
+    <title>Pilot Connect</title>
+    <!--Favicon Logo-->
+    <link href="images/favicon-32x32.png" rel="icon" type="image/x-icon"/>
+
+    <meta name="title" content="defying gravity">
+    <meta name="description" content="defying gravity">
+    <meta name="keywords" content="pilot connect, pilot-connect, defying gravity, thedefyinggravity, the defying gravity, find connect fly">
+    <meta name="viewport" content="width=device-width">
+    <!-- build:css(.) styles/vendor.css -->
+
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-ui-notification/dist/angular-ui-notification.css" />
+    <link rel="stylesheet" href="bower_components/bootswatch-dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/font-awesome.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/form.css">
+    <link rel="stylesheet" href="styles/circle.css">
+
+    <!-- endbuild -->
+    <!-- sumome Code -->
+    <!-- <script src="//load.sumome.com/" data-sumo-site-id="657bac4bafc36e42267df20e5f878a0a3859e28b353644c780ba5d35c79ff9bd" async="async"></script> -->
+    <!-- sumome code end-->
+
+    <!-- Facebook Pixel Code -->
+    <!--<script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+              document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+      fbq('init', '527628470746705');
+      fbq('track', "PageView");</script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=527628470746705&ev=PageView&noscript=1"
+    /></noscript>-->
+    <!-- End Facebook Pixel Code -->
+    <!-- Google Analytics code -->
+    <!--<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-79189556-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>-->
+    <!-- Google Analytics code END -->
+
+    <!-- Google Tag Manager -->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-55ZWD6"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start': new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+                '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-55ZWD6');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Heap Analytics -->
+    <script type="text/javascript">
+        window.heap = window.heap || [], heap.load = function (e, t) {
+            window.heap.appid = e, window.heap.config = t = t || {};
+            var r = t.forceSSL || "https:" === document.location.protocol, a = document.createElement("script");
+            a.type = "text/javascript", a.async = !0, a.src = (r ? "https:" : "http:") + "//cdn.heapanalytics.com/js/heap-" + e + ".js";
+            var n = document.getElementsByTagName("script")[0];
+            n.parentNode.insertBefore(a, n);
+            for (var o = function (e) {
+                return function () {
+                    heap.push([e].concat(Array.prototype.slice.call(arguments, 0)))
+                }
+            }, p = ["addEventProperties", "addUserProperties", "clearEventProperties", "identify", "removeEventProperty", "setEventProperties", "track", "unsetEventProperty"], c = 0; c < p.length; c++)heap[p[c]] = o(p[c])
+        };
+        heap.load("2347381855");
+    </script>
+    <!--End Heap Analytics -->
+
+    <!-- Walk Me Code -->
+    <script type="text/javascript">(function () {
+        var walkme = document.createElement('script');
+        walkme.type = 'text/javascript';
+        walkme.async = true;
+        walkme.src = 'https://cdn.walkme.com/users/4fbf4f63e241456bbb703e16f1e9f8f3/walkme_4fbf4f63e241456bbb703e16f1e9f8f3_https.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(walkme, s);
+        window._walkmeConfig = {smartLoad: true};
+    })();</script>
+    <!-- Walk Me Code End -->
+
+    <!--Facebook-->
+    <script>
+        var FB = window.FB;
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '1470737083033561',
+                xfbml      : true,
+                version    : 'v2.8'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!--Facebook-->
+
+
+
+    <!-- Angular -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>-->
+
+    <!-- Firebase -->
+    <!--<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>-->
+
+    <!-- AngularFire -->
+    <!--<script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>-->
+
+    <script src="https://apis.google.com/js/client.js" type="text/javascript"></script>
+    <script src="https://www.google.com/jsapi" language="javascript"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
+    <script>
+
+        //demo app refrence
+        // Initialize Firebase
+        /*var config = {
+            apiKey: "AIzaSyAEghDXsjTIhXVJdCUuPpELup0E8U-K6lw",
+            authDomain: "pilot-live-app.firebaseapp.com",
+            databaseURL: "https://pilot-live-app.firebaseio.com",
+            storageBucket: "pilot-live-app.appspot.com",
+            messagingSenderId: "853923741533"
+        };
+        firebase.initializeApp(config);*/
+
+        //live app reference
+        // Initialize Firebase
+
+        var config = {
+         apiKey: "AIzaSyB8BgFHn6bBCl8_V_4VIc8PuIrqMx54prU",
+         authDomain: "pilot-app.firebaseapp.com",
+         databaseURL: "https://pilot-app.firebaseio.com",
+         storageBucket: "pilot-app-4f6fb.appspot.com",
+         messagingSenderId: "481328446457"
+         };
+         firebase.initializeApp(config);
+
+    </script>
+
+</head>
+<body ng-app="defyingGravityApp">
+
+<!--[if lte IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div ui-view name="nav"></div>
+<div class="container-fluid" id="content">
+    <div ui-view name="content"></div>
+</div>
+<div ui-view name="footer"></div>
+<!--<script src="https://www.gstatic.com/firebasejs/3.0.4/firebase.js"></script>-->
+
+
+<!--<script type="text/javascript"-->
+        <!--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBo7xR4CJPGwAKNK4cr-IS5FzAZaJnPiQk&libraries=places,geometry"></script>-->
+<script type="text/javascript" async defer src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyAEghDXsjTIhXVJdCUuPpELup0E8U-K6lw&libraries=places,geometry"></script>
+<!--<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>-->
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-ui-notification/dist/angular-ui-notification.js"></script>
+<script src="bower_components/firebase/firebase.js"></script>
+<script src="bower_components/js-marker-clusterer/src/markerclusterer.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angularfire/dist/angularfire.js"></script>
+<script src="bower_components/bootswatch-dist/js/bootstrap.js"></script>
+<script src="bower_components/underscore/underscore.js"></script>
+<script src="bower_components/pdfjs-dist/build/pdf.js"></script>
+<script src="bower_components/pdfjs-dist/build/pdf.worker.js"></script>
+<script src="bower_components/angular-thumbnails/dist/angular-thumbnails.min.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+
+<script src="scripts/components/ngAutocomplete.js"></script>
+<script src="scripts/common/app.js"></script>
+<script src="scripts/common/config.js"></script>
+<script src="scripts/common/routes.js"></script>
+<!-- <script src="scripts/require.js"></script> -->
+<script src="scripts/common/constants.js"></script>
+
+<script src="scripts/services/firebaseService.js"></script>
+<script src="scripts/services/authService.js"></script>
+<script src="scripts/services/profileService.js"></script>
+<script src="scripts/services/googleMapService.js"></script>
+<script src="scripts/services/placesService.js"></script>
+<script src="scripts/services/pilotsService.js"></script>
+<script src="scripts/services/loginService.js"></script>
+<script src="scripts/services/reviewService.js"></script>
+<script src="scripts/services/forgotPasswordService.js"></script>
+<script src="scripts/services/messagesService.js"></script>
+<script src="scripts/services/mailService.js"></script>
+
+<script src="scripts/controllers/homeController.js"></script>
+<script src="scripts/controllers/contactController.js"></script>
+<script src="scripts/controllers/profileController.js"></script>
+<script src="scripts/controllers/userController.js"></script>
+<script src="scripts/controllers/pilotsController.js"></script>
+<script src="scripts/controllers/searchController.js"></script>
+<script src="scripts/controllers/placesController.js"></script>
+<script src="scripts/controllers/simpleLoginController.js"></script>
+<script src="scripts/controllers/registerController.js"></script>
+<script src="scripts/controllers/forgotPasswordController.js"></script>
+<script src="scripts/controllers/deleteConfirmationController.js"></script>
+<script src="scripts/controllers/sendMessageController.js"></script>
+<script src="scripts/controllers/messagesController.js"></script>
+
+<script src="scripts/controllers/addPhotoController.js"></script>
+<script src="scripts/controllers/reviewController.js"></script>
+<script src="scripts/controllers/readReviewController.js"></script>
+<script src="scripts/controllers/policiesController.js"></script>
+<script src="scripts/controllers/formController.js"></script>
+
+<script src="scripts/controllers/directives.js"></script>
+<script src="scripts/controllers/newMsgs.directive.js"></script>
+
+<!--<script>-->
+    <!--angular.element(document).ready(function () {-->
+        <!--angular.bootstrap(document, []);-->
+    <!--});-->
+
+<!--</script>-->
+
+<!-- endbuild -->
+</body>
+</html>

@@ -1,0 +1,249 @@
+<div class=" ">
+    <div class="form-container">
+        <div class="background-image"></div>
+        <div class="profile-form-content text-center">
+            <div class="profile-head">Edit My Pilot Profile</div>
+            <div class="profile-settings">
+                <div id="profile" class="row">
+                    <form name='profileForm' ng-submit="save(profile)">
+                        <div id="profile-content">
+                            <!--Profile Image-->
+                            <div class="form-group padding">
+                                <img id="profileImage" class="profileImg" ng-src="{{userImg}}"
+                                     style="max-width:200px; max-height:200px;" ng-click="uploadImage()">
+                                <img src="images/edit-profile-image-3.png" class="profile-upload-image"
+                                     ng-click="uploadImage()"/>
+                                <div ng-show="uploading">Uploading image...</div>
+
+                                <input ng-show="false" class="padding" type="file" id="files" name="files[]"
+                                       accept="image/*"/>
+                                <output id="list" ng-hide='true'></output>
+
+
+                            </div>
+
+                            <!--Pilot's Name-->
+                            <div class="form-group names">
+                                <div class="col-md-6">
+                                    <input type="text" class="fname" name="name"
+                                           ng-model="profile.fname" placeholder="First Name" required/>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="text" class="lname" name="name"
+                                           ng-model="profile.lname" placeholder="Last Name" required/>
+                                </div>
+                            </div>
+
+                            <!--Pilot's Email-->
+                            <div class="form-group ">
+                                <input ng-if="profile.email" id="email" type="email" class=" profile-inputs"
+                                       name="email" ng-model="profile.email" placeholder="Email Address"
+                                       disabled required>
+                                <!--<input ng-if="!profile.email" type="email" class=" profile-inputs" name="email" ng-model="profile.email" placeholder="Email Address"  >-->
+                            </div>
+
+                            <!--Pilot's Ratings-->
+                            <div class='form-group'>
+                                <select class='profile-inputs' placeholder="Pilot Rating"
+                                        ng-model="profile.pilotRating"
+                                        ng-options="rating for rating in pilotRating" required>
+                                    <option disabled selected value> Pilot Ratings</option>
+                                </select>
+                            </div>
+                            <div class='form-group'>
+                                <input ng-if="other" type="text" class=" profile-inputs"
+                                       ng-model="profile.otherRatings" placeholder="Other Type Rating"
+                                       onfocus="this.placeholder = ''"
+                                       onblur="this.placeholder = 'Other Type Rating'" required>
+                            </div>
+
+
+                            <!--Pilot's Aircraft Category-->
+                            <div class='form-group'>
+                                <select class='profile-inputs' id="category" placeholder="Aircraft category"
+                                        ng-model="profile.category"
+                                        ng-options="category for category in aircraftCategories" required>
+                                    <option disabled selected value> Aircraft Category</option>
+                                </select>
+                            </div>
+
+
+                            <!--About You-->
+                            <div class='form-group'>
+                                        <textarea class=' profile-edit-Txt' ng-model="profile.info" id="info"
+                                                  placeholder="Tell us a bit about yourself such as what type of airplane you typically fly and where"
+                                                  onfocus="this.placeholder = ''"
+                                                  onblur="this.placeholder = 'Tell us a bit about yourself such as what type of airplane you typically fly and where'"></textarea>
+                            </div>
+                            <!--Dream Flight-->
+                            <div class='form-group'>
+                                        <textarea class=" profile-edit-Txt" ng-model="profile.dream"
+                                                  placeholder="What is your dream flight?"
+                                                  onfocus="this.placeholder = ''"
+                                                  onblur="this.placeholder = 'What is your dream flight?'"></textarea>
+                            </div>
+
+                            <div class="profile-choices-group editProfile-radio-group contact-safety-pilots">
+
+                                <div class="form-selection-txt">Contact me for the following (select all that apply)
+                                </div>
+
+                                <div class='form-group'>
+                                    <div class="form-checkbox">
+                                        <input type="checkbox" name="safety" ng-model="profile.safety">
+                                        <span>Safety Pilot </span><br/>
+                                    </div>
+                                </div>
+
+                                <div class='form-group'>
+                                    <div class="form-checkbox">
+                                        <input type="checkbox" name="aerial_tours" ng-model="profile.aerial_tours"/>
+                                        <span>Local host: aerial tours</span><br/>
+                                    </div>
+                                </div>
+
+                                <div class='form-group'>
+                                    <div class="form-checkbox">
+                                        <input type="checkbox" name="general_QA" ng-model="profile.general_QA"/>
+                                        <span> Local host: general questions/information </span><br/>
+                                    </div>
+                                </div>
+
+                                <div class='form-group'>
+                                    <div class="form-checkbox">
+                                        <input type="checkbox" name="copilot" ng-model="profile.copilot"/>
+                                        <span>Copilot to build time </span><br/>
+                                    </div>
+                                </div>
+
+                                <div class='form-group'>
+                                    <div class="form-checkbox">
+                                        <input type="checkbox" name="handler" ng-model="profile.handler"/>
+                                        <span> Handler for domestic/international arrivals (customs, car rentals etc.) </span><br/>
+                                    </div>
+                                </div>
+
+
+                                <div class='form-group'>
+                                    <div class="form-checkbox">
+                                        <input type="checkbox" name="help" ng-model="profile.help"/>
+                                        <span> Mentor to young aspiring pilots* </span><br/>
+                                    </div>
+                                </div>
+
+
+                                <div class='form-group'>
+                                    <div class="form-checkbox">
+                                        <input type="checkbox" name="paired" ng-model="profile.paired"/>
+                                        <span> Pairing with AOPA rusty pilot program* </span><br/>
+                                    </div>
+                                </div>
+
+                                <div ng-show="checkOne" class="error">Please check at least one box</div>
+
+
+                                <div class="rep-txt">*Representatives at AOPA may reach out with further details and
+                                    opportunities.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group bottom-btn">
+                            <!--<button type="button" class="btn btn-default" ng-disabled="isResetDisabled()"-->
+                            <!--ng-click="reset()">Reset-->
+                            <!--</button>-->
+                            <!--<button type="button" class="save btn btn-primary"
+                                    ng-disabled="isSaveDisabled(profileForm)" ng-click="save(profile)">Save
+                            </button>-->
+                            <button type="submit" class="save btn btn-primary"
+                                    ng-disabled="isSaveDisabled(profileForm)">Save
+                            </button>
+                        </div>
+                    </form>
+
+                    <div ng-controller="PlacesController" class="add-profile-img profile-mylocations">
+                        <div class="profilePlaces">
+                            <h1 class="profileTitle">MY LOCATIONS</h1>
+                            <p class="padding" ng-show="noPlaces()">No places added yet</p>
+                            <table class="table places">
+                                <tr ng-repeat="(id, place) in userPlaces" ng-class="{'info': isEdited(id)}">
+                                    <td>
+                                        {{place.location}}
+                                    </td>
+                                    <td class="button">
+                                        <button type="button" class="btn btn-primary" ng-click="editPlace(id)"
+                                                ng-disabled="isEdited(id)">Edit
+                                        </button>
+                                    </td>
+                                    <td class="button">
+                                        <button type="button" class="btn btn-danger" ng-click="deletePlace(id)"
+                                                ng-disabled="isEdited(id)">Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="add location-tr">
+                                    <td class="location-td">
+                                        <input id="searchTextField" type="text" class="form-control"
+                                               placeholder="Enter part of address"
+                                               ng-autocomplete
+                                               ng-model="address.location"
+                                               details="address.details"
+                                               options="address.options">
+                                        <!--ng-keyup="$event.keyCode == 13 && selectFirst('searchTextField)">-->
+                                    </td>
+                                    <td class="button">
+                                        <button type="button" class="btn btn-primary"
+                                                ng-click="save(placeToEditId, address)"
+                                                ng-disabled="isSaveDisabled()">
+                                            {{getButtonCaption()}}
+                                        </button>
+                                    </td>
+                                    <td class="button">
+                                        <button type="button" class="btn btn-danger" ng-click="dismiss()"
+                                                ng-disabled="isDismissDisabled()">
+                                            Dismiss
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div ng-if="provider == 'password'" class="delete-container">
+                            <div class="delete-account">
+                                <span>Update Password</span>
+                                <input class="profile-inputs" name="oldPass" type="password"
+                                       ng-model="pass.old"
+                                       placeholder="Old Password">
+                                <input class="profile-inputs" name="newPass" type="password"
+                                       ng-model="pass.new"
+                                       placeholder="New Password"
+                                       ng-minlength="5"
+                                       ng-maxlength="12">
+                                <button type="button" class=" btn btn-primary"
+                                        ng-click="changePassword(pass)" ng-disabled="isChangePassDisabled">Change
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <div class="delete-container delete-defying-container">
+                            <div class="delete-account">
+                                <span>Delete your <a class="tdf-text">Pilot Connect</a> Account?</span>
+                                <button type="button" class="btn btn-danger btn-delete-account"
+                                        ng-click="deleteUserAccount()">
+                                    Delete Account
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

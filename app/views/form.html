@@ -1,0 +1,61 @@
+<!--<div class="row ">
+    <img src="images/home-bg-2.jpg" class="background-image "/>
+    <div class="form-container">
+        <div class="form-content text-center">
+            &lt;!&ndash; the links to our nested states using relative paths &ndash;&gt;
+            &lt;!&ndash; add the active class if the state matches our ui-sref &ndash;&gt;
+            <div id="status-buttons" class="text-center">
+                <img class="prop_img" ng-src="{{page1}}" ng-click="changestate(1)">
+                <img class="prop_img" ng-src="{{page2}}" ng-click="changestate(2)">
+                <img class="prop_img" ng-src="{{page3}}" ng-click="changestate(3)">
+                <img class="prop_img" ng-src="{{page4}}" ng-click="changestate(4)">
+            </div>
+            <div class="profile-head">My Pilot Profile</div>
+            &lt;!&ndash; use ng-submit to catch the form submission and use our Angular function &ndash;&gt;
+            <form name="profile-form" id="signup-form" validate>
+                &lt;!&ndash; our nested state views will be injected here &ndash;&gt;
+                <div id="form-views" ui-view="content"></div>
+            </form>
+
+        </div>
+    </div>
+</div>-->
+
+<div class="row ">
+    <img src="images/home-bg-2.jpg" class="background-image "/>
+    <div class="form-container">
+        <div class="form-content text-center">
+            <!-- the links to our nested states using relative paths -->
+            <!-- add the active class if the state matches our ui-sref -->
+            <div id="status-buttons" class="text-center">
+                <img class="prop_img" ng-src="{{'images/blue1.png'}}"
+                     ng-click="changestate(1)">
+                <img class="prop_img"
+                     ng-src="{{ (page2 || page3 || page4) == true && 'images/blue2.png' || 'images/grey2.png' }}"
+                     ng-click="changestate(2)">
+                <img class="prop_img"
+                     ng-src="{{ (page3 || page4) == true && 'images/blue3.png' || 'images/grey3.png' }}"
+                     ng-click="changestate(3)">
+                <img class="prop_img"
+                     ng-src="{{ page4 == true && 'images/blue4.png' || 'images/grey4.png' }}"
+                     ng-click="changestate(4)">
+            </div>
+            <div class="profile-head">My Pilot Profile</div>
+            <!-- use ng-submit to catch the form submission and use our Angular function -->
+            <form name="profile-form" id="signup-form" validate>
+                <!-- our nested state views will be injected here -->
+                <div id="form-views">
+                    <div ng-show="page1" ng-include="'views/form1.html'"></div>
+                    <div ng-show="page2" ng-include="'views/form2.html'"></div>
+                    <div ng-show="page3" ng-include="'views/form3.html'"></div>
+                    <div ng-show="page4" ng-include="'views/form4.html'"></div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+

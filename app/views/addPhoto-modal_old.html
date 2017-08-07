@@ -1,0 +1,62 @@
+<!-- <div class="modal-header">
+    
+</div> -->
+
+<div class="modal-body modal-addPhoto">
+    <div class="tile place-tile">
+        <div class="place-indent">
+            <div class="titles">Upload a Public Photo or Video of {{pilot.profile.name}}</div>
+        </div>
+    </div>
+    <div class="main-fill">
+        <div class="main-content text-center">
+            <div class="addPhoto">
+                <div class="addpic"> Add a Photo :</div>
+                <div ng-if="uploading" class="uploadProgress">
+                    <div class="c100 {{'p'+uploadProgress}} ">
+                        <span>{{uploadProgress | number : 0}}</span>
+                        <div class="slice">
+                            <div class="bar"></div>
+                            <div class="fill"></div>
+                        </div>
+                    </div>
+                    <!--<div class="progress">-->
+                    <!--<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="uploadProgress"-->
+                    <!--aria-valuemin="0" aria-valuemax="100" style="{{'width:'+uploadProgress+'%'}}">-->
+                    <!--{{uploadProgress}}% Complete-->
+                    <!--</div>-->
+                    <!--</div>-->
+                </div>
+
+                <img id="addimg" src="/images/logo.png" class="addPhotosImg">
+
+
+                <!-- <img ng-if="uploadImg" ng-src="uploadImg" class="addPhotosImg">
+                <img ng-if="uploadImg" id="addimg" src="#" class="addPhotosImg"> -->
+                <div class="error" ng-if="error.size">Please upload a file of size less than 100Mb</div>
+                <div class="error" ng-if="error.noFile">Please upload a photo or video first</div>
+                <div class="addinput">
+                    <input class="input padding" type="file" id="addPhoto" name="files[]" accept="image/*,video/*"
+                           multiple/>
+                    <output id="output" ng-hide="false"></output>
+                </div>
+            </div>
+        </div>
+        <div class="tile footer-tile">
+            <div class="footer-relative">
+                <div class="action-container">
+                    <div class="action-close">
+                        <div class="quantum-button quantum-button-flat-text" role="button" ng-click="$close()">CANCEL
+                        </div>
+                    </div>
+                    <div class="action-publish">
+                        <div class="quantum-button" role="button" ng-click="upload()">SUBMIT
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

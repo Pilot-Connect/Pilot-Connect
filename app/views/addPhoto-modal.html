@@ -1,0 +1,68 @@
+<!-- <div class="modal-header">
+
+</div> -->
+
+<div class="modal-body modal-addPhoto">
+    <div class="text-center">
+        <div class="droppable uploadTxt">
+            <div ng-if="!uploading">
+                <span>Drop files here or </span>
+                <span><button class="browse"> Browse..</button> </span>
+                <span class="sizeLimit">(max 4GB/file)</span>
+            </div>
+
+            <div ng-if="uploading" class="totalUploadProgress">
+                <div class="c100 {{'p'+totalUploadProgress}} ">
+                    <span>{{totalUploadProgress}}%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="error" ng-if="error.size">Please upload a file of size less than 100Mb</div>
+            <div class="error" ng-if="error.noFile">Please upload a photo or video first</div>
+        </div>
+        <div class="fileUploadList" ng-if="mediaFiles">
+            <div ng-repeat="file in mediaFiles">
+                <div class="fileUploadItem text-center">
+                    <div class="mediaFileName uploadTxt">{{file.name}}</div>
+                    <div class="uploadProgress" ng-if="uploading">
+                        <div class="progress pg-bar">
+                            <div class="progress-bar progress-bar-success" role="progressbar"
+                                 aria-valuenow="file.uploadProgress]"
+                                 aria-valuemin="0" aria-valuemax="100" style="{{'width:'+file.uploadProgress+'%'}}">
+                                {{file.uploadProgress}}%
+                            </div>
+                        </div>
+                    </div>
+                    <div class="removeMedia" ng-if="!uploading">
+                        <button class="btn-remove btn-danger" ng-click="RemoveUploadItem($index)">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tile footer-tile">
+            <div class="footer-relative">
+                <div ng-if="!uploading" class="action-container">
+                    <div class="action-close">
+                        <div class="quantum-button quantum-button-flat-text" role="button" ng-click="$close()">
+                            CANCEL
+                        </div>
+                    </div>
+                    <div class="action-publish" ng-if="mediaFiles.length > 0">
+                        <div class="quantum-button" role="button" ng-click="upload()">UPLOAD
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="uploading" class="action-container">
+                    <div class="action-close">
+                        <button class="doneBtn" ng-disabled="!allUploaded"                            ng-click="$close()">DONE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="loginPage">
+
+   <!-- <video autoplay loop muted poster="/images/clouds.jpg" id="background" ng-if="!deviceIsCordova"> -->
+   <video autoplay loop muted poster="/images/clouds.jpg"  ng-if="!deviceIsCordova" class="fullscreen-bg__video">
+  <source src="/images/Defying_Gravity_Homepage_Video.mp4" type="video/mp4">
+  </video>
+  
+  <div  class="loginModal">
+      <div class="{{loginClass}}" >
+      <!-- BACKGROUND IMAGE (removed using black background instead)-->
+      <!-- <div class="BackgroundImage"></div> -->
+
+      <div class="loginheader">
+      <!-- Logo -->
+      <div class="login_logo" ng-if="!deviceIsCordova">
+        <img class="logo" src="images/logo.png">
+      </div>
+
+      
+      <!-- Simple Log In -->
+      <button type="button" class="btn btn-default login_btn" ng-click="login(providers.PASSWORD)">
+        <span class="buttonText">Log in</span>
+      </button> 
+      </div>
+
+      <div class="mainContent">
+        <!-- Welcome -->
+        <div id="welcome" > 
+          <div class="welcom text-center"> Welcome to Pilot Connect!</div>
+          <div class="connect text-center"> Connect with Pilots WorldWide</div>
+        </div>
+
+        <div class="registercontainer">
+          <div class="signupForm">
+            <!-- Social Log In -->
+          <div id="SocialLogin">
+            <div class="btnWrapper text-center">
+              <button type="button" class="btn btn-primary facebook fb btn-block" ng-click="login(providers.FACEBOOK)">
+                <img class="btnImg" src="images/facebook.png"/>
+                <span class="buttonText socialBtntxt text-center">Continue with facebook</span>
+              </button>
+              <div class="dualbtns">
+                <button type="button" class="btn btn-primary twitter sbtn left" ng-click="login(providers.TWITTER)">
+                  <img class="btnImg" src="images/twitter.png"/>
+                  <span class=" buttonText socialBtntxt  text-center">twitter</span>
+                </button>
+                <button type="button" class="btn btn-primary google sbtn right" ng-click="login(providers.GOOGLE)">
+                  <img  class="btnImg"src="images/google.png"/>
+                  <span class="buttonText socialBtntxt  text-center">google+</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="groupSeparator">
+            <or>or</or>
+          </div>
+
+          <!-- Sign Up -->
+          <div id="signup">
+            <form class="" novalidate name="registerForm" ng-submit="register(user)">
+              <div class="signUp_item">
+                <input name="txtemail" ng-required="true" type="email" ng-model="user.email" placeholder="Email"
+                ng-minlength="5"
+                ng-maxlength="30"
+                required>
+              </div>
+              <div class="signUp_item">
+
+                <input name="txtPassword" ng-required="true" type="password" ng-model="user.password" placeholder="Password"
+                ng-minlength="5"
+                ng-maxlength="30"
+                required>
+              </div>
+
+              <div class="signUp_item ">
+                <input type="submit" ng-disabled="registerForm.$invalid" class="" value="Sign Up"/>
+              </div>
+            </form>
+          </div>
+          <!-- term and services notice -->
+          <div id="TnC">
+            Creating an account means you’re OK with Pilot Connect's Terms of Service and Privacy Policy
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>    
+</div>
+</div>
+

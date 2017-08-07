@@ -1,0 +1,140 @@
+<div>
+    <div class='form-group'>
+        <select class='profile-inputs' placeholder="Pilot Rating" ng-model="profile.pilotRating"
+                ng-options="rating for rating in pilotRating" required>
+            <option disabled selected value> Pilot Ratings</option>
+        </select>
+        <div ng-show="err.pilotRating" class="error">This field is required</div>
+    </div>
+
+    <div class='form-group'>
+        <select class='profile-inputs' id="category" placeholder="Aircraft category" ng-model="profile.category"
+                ng-options="category for category in aircraftCategories" required>
+            <option disabled selected value> Aircraft Category</option>
+        </select>
+        <div ng-show="err.category" class="error">This field is required</div>
+    </div>
+
+    <div class='form-group'>
+        <input ng-if="other" type="text" class=" profile-inputs" name="email" ng-model="profile.otherRatings"
+               placeholder="Other Type Rating"
+               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Other Type Rating'">
+        <div ng-show="err.other" class="error">This field is required</div>
+    </div>
+
+    <!--<div class="profile-choices-group">
+        <div class='form-group'>
+            <div class="form-radio-txt">Okay to contact as a Safety Pilot?
+                <span class="form-radio">
+                    <input ng-model="profile.safety" type="radio" value="Yes" name="safety">Yes
+                    <input ng-model="profile.safety" type="radio" value="No" name="safety">No
+                </span>
+            </div>
+            <div ng-show="err.safety" class="error">This field is required</div>
+        </div>
+
+        <div class='form-group'>
+            <div class="help-txt">Help build your aviation community!</div>
+            <div class="form-radio-txt help-radio">Do you want to help mentor aspiring aviators in High School ?
+                <span class="form-radio-txt">
+                    <input ng-model="profile.help" type="radio" value="Yes" name="help">Yes
+                    <input ng-model="profile.help" type="radio" value="No" name="help">No
+                </span>
+            </div>
+            <div ng-show="err.help" class="error">This field is required</div>
+
+            <div class="form-radio-txt help-radio">What about being paired with a rusty pilot who wants to get back into
+                flying ?
+                <span class="form-radio-txt">
+                    <input ng-model="profile.paired" type="radio" value="Yes" name="paired">Yes
+                    <input ng-model="profile.paired" type="radio" value="No" name="paired">No
+                </span>
+            </div>
+            <div ng-show="err.paired" class="error">This field is required</div>
+            <div class="rep-txt">*Representatives at AOPA may reach out with further details and
+                opportunities.
+            </div>
+        </div>
+    </div>-->
+
+    <div class="profile-choices-group">
+
+        <div class="form-selection-txt">Contact me for the following (select all that apply)</div>
+
+        <div class='form-group'>
+            <div class="form-checkbox">
+                <input type="checkbox" name="safety"  ng-model="profile.safety">
+                <span>Safety Pilot </span><br/>
+            </div>
+            <!--<div ng-show="err.safety" class="error">This field is required</div>-->
+        </div>
+
+        <div class='form-group'>
+            <div class="form-checkbox">
+                <input type="checkbox" name="aerial_tours" ng-model="profile.aerial_tours"/>
+                <span>Local host: aerial tours</span><br/>
+            </div>
+            <!--<div ng-show="err.aerial_tours" class="error">This field is required</div>-->
+        </div>
+
+        <div class='form-group'>
+            <div class="form-checkbox">
+                <input type="checkbox" name="general_QA" ng-model="profile.general_QA"/>
+                <span> Local host: general questions/information </span><br/>
+            </div>
+            <!--<div ng-show="err.general_QA" class="error">This field is required</div>-->
+        </div>
+
+        <div class='form-group'>
+            <div class="form-checkbox">
+                <input type="checkbox" name="copilot" ng-model="profile.copilot"/>
+                <span>Copilot to build time </span><br/>
+            </div>
+            <!--<div ng-show="err.copilot" class="error">This field is required</div>-->
+        </div>
+
+        <div class='form-group'>
+            <div class="form-checkbox">
+                <input type="checkbox" name="handler" ng-model="profile.handler"/>
+                <span> Handler for domestic/international arrivals (customs, car rentals etc.) </span><br/>
+            </div>
+            <!--<div ng-show="err.handler" class="error">This field is required</div>-->
+        </div>
+
+
+        <div class='form-group'>
+            <div class="form-checkbox">
+                <input type="checkbox" name="help" ng-model="profile.help"/>
+                <span> Mentor to young aspiring pilots* </span><br/>
+            </div>
+            <!--<div ng-show="err.help" class="error">This field is required</div>-->
+        </div>
+
+
+        <div class='form-group'>
+            <div class="form-checkbox">
+                <input type="checkbox" name="paired" ng-model="profile.paired"/>
+                <span> Pairing with AOPA rusty pilot program* </span><br/>
+            </div>
+            <!--<div ng-show="err.paired" class="error">This field is required</div>-->
+        </div>
+
+        <div ng-show="err.checkOne" class="error">Please check at least one box</div>
+
+        <div class="rep-txt">*Representatives at AOPA may reach out with further details and
+            opportunities.
+        </div>
+    </div>
+
+
+    <div class="profile-footer">
+        <div class="form-group row">
+            <a ng-click="changestate(1)" class="btn next-section">
+                BACK
+            </a>
+            <a ng-click="changestate(3)" class="btn next-section">
+                NEXT
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body >
+	<div class="contactPage">
+	<div class="contact-form padding">
+		<form ng-submit="send()" method="post" enctype="text/plain" validate name="contactForm" >
+			<div class="contact-head-text">We want to hear from you !</div>
+			<div class="row contact-row">
+				<span class="col left contact-name">
+					<div class="contact-headers">Your name*:</div>
+					<input type="text" name="name" placeholder ="Your Name" id="compose-name" required>
+				</span>
+				<span class="col right contact-email">
+					<div ng-if="deviceIsCordova" class="contact-headers">Your email *:</div>
+					<div ng-if="!deviceIsCordova" class="contact-headers">Your email address*:</div>
+					<input type="email" name="mail" placeholder="Your Email" id="compose-from" required>
+				</span>
+					
+			</div>
+			<div class="row contact-row-2">
+				<div class="contact-headers">Subject:</div>
+				<input type="text" name="comment" placeholder="Your Comment" size="50" id="compose-subject" ng-model="mail.subject"><br><br>
+				<div class="contact-headers">Message *:</div>
+				<textarea id="compose-message" required></textarea>
+				<input class="btn-primary" id="send-button" type="submit" value="Send Message"  ng-disabled="contactForm.$invalid">
+			</div>
+		</form>
+	</div>
+	</div>
+</body>
+</html>

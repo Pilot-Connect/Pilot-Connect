@@ -1,0 +1,65 @@
+<div class="modal-body" id="sendModal">
+
+    <div class="tile place-tile">
+        <span class=" glyphicon glyphicon-envelope send-message-icon"></span>
+        <div class="action-close-mobile-container">
+            <div class="action-close-mobile">
+                <img alt=" Close "
+                     src="https://maps.gstatic.com/places-api/reviews-widget/images/ic_arrow_back_white_48dp_1.png">
+            </div>
+        </div>
+
+        <div class="action-publish-mobile-container">
+            <div class="action-publish-mobile"></div>
+        </div>
+        <div>
+            <div class="place-indent">
+                <div class="titles">Send Message</div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="main-fill">
+        <div class="mobile-scrollable">
+            <div class="tile user-tile">
+                <img ng-if="!profileImage" class="user-profile-photo-url" ng-src={{userData.profileImgUrl}}>
+                <img ng-if="profileImage" class="user-profile-photo-url" class="profileImg"
+                     ng-src="{{profileImage}}">
+                <div class="user-indent">
+                    <div class="user-name">{{profile.login || profile.name}}</div>
+                    <div class="user-notice">
+                        <div class="user-notice-long sendmsg">FROM : {{profile.name || profile.login}}
+                        </div>
+                        <div class="user-notice-long sendmsg">To : {{sendto.profile.name || sendto.profile.login}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" mobile-scrollable-fill">
+                <div class="tile review-text-tile">
+                    <div class="review-text-indent">
+                        <textarea placeholder="Write a Message" class="review-text" ng-model="msgtext"> </textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tile footer-tile">
+        <div class="footer-relative">
+            <div class="action-container">
+                <div class="action-close">
+                    <div class="quantum-button quantum-button-flat-text" role="button" ng-click="$close()">
+                        CANCEL
+                    </div>
+                </div>
+                <div class="action-publish">
+                    <div class="quantum-button quantum-button-flat-text quantum-button-disabled"
+                         role="button" ng-click="send(msgtext)">SEND
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

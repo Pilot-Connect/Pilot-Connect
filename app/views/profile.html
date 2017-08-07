@@ -1,0 +1,150 @@
+<div class="container profile">
+    <!--<tabset>-->
+    <!--<tab heading="PROFILE">-->
+    <div class="profile-settings">
+
+
+        <h1 class="profileheader heading text-center">Profile Settings</h1>
+
+        <div id="profile" class="row">
+
+            <div class="col-md-8">
+                <form name='profileForm'>
+                    <div class="form-group">
+                        <h1 class="profileTitle">PROFILE</h1>
+                        <div class="radio">
+                            <label>
+                                <input type='radio' ng-model="profile.type" ng-value=types.PERSONAL>Personal
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type='radio' ng-model="profile.type" ng-value=types.BUSINESS>Business
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group padding">
+
+                        <img ng-if="userImg" id="profileImage" class="profileImg" ng-src="{{userImg}}"
+                             style="max-width:200px; max-height:200px;">
+
+                        <div ng-show="loading">Uploading image...</div>
+
+                        <input class="padding" type="file" id="files" name="files[]" accept="image/*"/>
+                        <output id="list" ng-hide='true'></output>
+                    </div>
+                    <div class='form-group'>
+                        <label for="login">Login</label>
+                        <input type='text' class='form-control' name="login" id="login" ng-model="profile.login"
+                               disabled>
+                    </div>
+                    <div class='form-group'>
+                        <label for="name">Name <span class="mandatory">*</span></label>
+                        <input type='text' class='form-control' name="name" id="name" ng-model="profile.name" required>
+                    </div>
+                    <div class='form-group'>
+                        <label for="ratings">Pilot ratings</label>
+                        <input type='text' class='form-control' id="ratings" ng-model="profile.ratings">
+                    </div>
+                    <div class='form-group'>
+                        <label for="category">Aircraft category</label>
+                        <select class='form-control' id="category" ng-model="profile.category"
+                                ng-options="category for category in aircraftCategories">
+                        </select>
+                    </div>
+                    <div class='form-group'>
+                        <label for="safety">Okay to contact as a Safety Pilot? <span
+                                class="mandatory">*</span></label><br/>
+                        Yes : <input ng-model="profile.safety" type="radio" value="Yes" name="safety" required>&nbsp;
+                        No : <input ng-model="profile.safety" type="radio" value="No" name="safety" required>
+                    </div>
+
+                    <div class='form-group'>
+                        <label for="info">More about you</label>
+                        <textarea type='text' class='form-control' id="info" ng-model="profile.info"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email <span class="mandatory">*</span></label>
+                        <input type='text' class='form-control' id="email" ng-model="profile.email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type='text' class='form-control' id="phone" ng-model="profile.phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="skype">Skype</label>
+                        <input type='text' class='form-control' id="skype" ng-model="profile.skype">
+                    </div>
+                    <div class="form-group">
+                        <label for="facebook">Facebook</label>
+                        <input type='text' class='form-control' id="facebook" ng-model="profile.facebook">
+                    </div>
+                    <div class="form-group">
+                        <label for="twitter">Twitter</label>
+                        <input type='text' class='form-control' id="twitter" ng-model="profile.twitter">
+                    </div>
+                    <div class="form-group">
+                        <label for="instagram">Instagram</label>
+                        <input type='text' class='form-control' id="instagram" ng-model="profile.instagram">
+                    </div>
+                    <div class="form-group bottom-btn">
+                        <button type="button" class="btn btn-default" ng-disabled="isResetDisabled()"
+                                ng-click="reset()">Reset
+                        </button>
+                        <button type="button" class="btn btn-primary" ng-disabled="isSaveDisabled(profileForm)"
+                                ng-click="save(profile)">Save changes
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <!--</tab>-->
+        <!--<tab heading="PIN LOCATIONS">-->
+        <div ng-controller="PlacesController" class="add-profile-img">
+            <div class="profilePlaces">
+                <h1 class="profileTitle">MY LOCATIONS</h1>
+                <p class="padding" ng-show="noPlaces()">No places added yet</p>
+                <table class="table places">
+                    <tr ng-repeat="(id, place) in userPlaces" ng-class="{'info': isEdited(id)}">
+                        <td>
+                            {{place.location}}
+                        </td>
+                        <td class="button">
+                            <button type="button" class="btn btn-primary" ng-click="editPlace(id)"
+                                    ng-disabled="isEdited(id)">Edit
+                            </button>
+                        </td>
+                        <td class="button">
+                            <button type="button" class="btn btn-danger" ng-click="deletePlace(id)"
+                                    ng-disabled="isEdited(id)">Delete
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="add location-tr">
+                        <td class="location-td">
+                            <input type="text" class="form-control" placeholder="Enter part of address" ng-autocomplete
+                                   ng-model="address.location" details="address.details" options="address.options">
+                        </td>
+                        <td class="button">
+                            <button type="button" class="btn btn-primary" ng-click="save(placeToEditId, address)"
+                                    ng-disabled="isSaveDisabled()">
+                                {{getButtonCaption()}}
+                            </button>
+                        </td>
+                        <td class="button">
+                            <button type="button" class="btn btn-danger" ng-click="dismiss()"
+                                    ng-disabled="isDismissDisabled()">
+                                Dismiss
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!--</tab>-->
+    <!--</tabset>-->
+</div>
+

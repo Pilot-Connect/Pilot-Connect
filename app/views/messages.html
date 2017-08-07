@@ -1,0 +1,297 @@
+<div class="MessageWrapper">
+    <div class="MsgContainer row">
+        <div class="col-md-3 pane pane-one" id="side">
+
+            <div class="pane-header">
+                <div class="pane-list-user">
+                    <img class="user-profile-photo" id="pfImage" ng-src="{{pfImage || userData.profileImgUrl}}"/>
+                    <span class="text-center msgPagetxt">{{profile.login || profile.value.name || profile.name}} </span>
+                    <!-- <button  ng-if="chatsloaded && messages" class="glyphicon glyphicon-trash deleteChat"
+                    ng-click="deleteChat(selected_user)"></button> -->
+                </div>
+
+            </div>
+
+            <div class="pane-list-controls">
+                <div class="controls">
+                    <button id="pilots" class="ctrlBtns" data-ignore-capture="any" ng-click="loadpilots()">All Pilots
+                    </button>
+                </div>
+                <div class="controls">
+                    <button id="chats" class="ctrlBtns" data-ignore-capture="any" ng-click="loadchats()">Chats</button>
+                </div>
+            </div>
+
+            <div class="search-container">
+                <label class="input-chatlist-search text-center">
+                    <input type="search" class="input-search" placeholder="Search or start new chat"
+                           ng-model="search.pilot"/>
+                </label>
+            </div>
+
+            <div class="pane-one-body" id="pane-side" ng-init="selection = { selectedNode:  null }">
+
+                <!-- ALL CHATS -->
+                <div ng-if="chatsloaded" class="tiptext">
+
+                    <div class="chatlist" ng-if="users" ng-repeat="user in users | filter: search.pilot"
+                    <div class="chatlist" ng-if="users" ng-repeat="user in users | filter: search.pilot"
+                         ng-click="selection.selectedNode = user" ng-class="{selected: selection.selectedNode == user}">
+
+                        <!--<div ng-if="user.value.name" class="chatlist-list-viewport "-->
+                        <!--ng-click="getConversation(user, 'chats')">-->
+                        <div class="chatlist-list-viewport ">
+
+                            <div class="chatlist-list-item " ng-click="getConversation(user, 'chats')">
+                                <!--<img class="user-profile-photo"  ng-mouseover="getUserProfile(user)" ng-mouseleave="closeUserProfile()"-->
+                                <!--ng-src="{{user.pilot.profile.image  || user.value.image || 'images/user-01.png' }}"/>-->
+                                <!--<img class="user-profile-photo"  ng-mouseover="getUserProfile(user)" ng-mouseleave="closeUserProfile()"-->
+                                <!--ng-src="{{user.pilot.profile.image  || user.value.image || 'images/user-01.png' }}"/>-->
+                                <!--<img class="user-profile-photo" ng-mouseover="getUserProfile(this,user)" onmouseover="
+                                tooltip.pop(this, '#userProfile', {calloutPosition :0.5, position :1, smartPosition :true, overlay : 1})"-->
+                                <!--ng-src="{{user.pilot.profile.image  || user.value.image || 'images/user-01.png' }}"/>-->
+
+                                <img ng-if="user.value" class="user-profile-photo" id="{{'chat' + $index }}"
+                                     ng-mouseover="getUserProfile(user,'#chat'+$index)"
+                                     ng-src="{{user.pilot.profile.image  || user.value.image || 'images/user-01.png' }}"
+                                     data-toggle="tooltip"
+                                     tabindex="0"
+                                     role="button"
+                                     data-placement="right"
+                                     data-trigger="hover"/>
+                                <img class="user-profile-photo" ng-if="!user.value" ng-src="images/user-01.png"/>
+
+                                <!--<img class="user-profile-photo" ng-mouseover="getUserProfile(this,user)"-->
+                                <!--ng-src="{{user.pilot.profile.image  || user.value.image || 'images/user-01.png' }}"/>-->
+                                <div class="chat-list-name listtxt">
+                                    {{user.value.login || user.value.name || "Pilot Connect User"}}
+                                </div>
+                                <span new-Msgs id="user.id" class="new"></span>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="noMsg" ng-if="!users">
+                        No Chats
+                    </div>
+                </div>
+
+                <!-- ALL PILOTS -->
+                <div ng-if="pilotsLoaded">
+
+                    <div class="chatlist" ng-if="pilots" ng-repeat="pilot in pilotusers | filter: search.pilot"
+                         ng-click="selection.selectedNode = pilot"
+                         ng-class="{selected: selection.selectedNode == pilot}">
+
+                        <!--<div class="chatlist-list-viewport" ng-click="getConversation(pilot, 'allpilots')">-->
+                        <div class="chatlist-list-viewport">
+                            <div class="chatlist-list-item " ng-click="getConversation(pilot, 'allpilots')">
+                                <div>
+                                    <!--<img class="user-profile-photo" ng-mouseover="getUserProfile(pilot)"-->
+                                    <!--ng-mouseleave="closeUserProfile()"-->
+                                    <!--ng-src="{{pilot.profile.image || 'images/user-01.png' }}"/>-->
+                                    <img ng-if="pilot.profile" class="user-profile-photo" id="{{'pilots' + $index }}"
+                                         ng-mouseover="getUserProfile(pilot,'#pilots'+$index)"
+                                         ng-src="{{pilot.profile.image || 'images/user-01.png' }}"
+                                         data-toggle="tooltip"
+                                         tabindex="0"
+                                         role="button"
+                                         data-placement="right"
+                                         data-trigger="hover"/>
+
+
+                                    <!--<img class="user-profile-photo" ng-click="getUserProfile(pilot)"
+                                     ng-src="{{pilot.profile.image || 'images/user-01.png' }}"/>-->
+                                </div>
+                                <div class="chat-list-name listtxt">
+                                    {{pilot.profile.name }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="" ng-if="!pilots">
+                        NO PILOTS AVAILABLE
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- SideBar End-->
+
+        <!-- Message Read View -->
+
+        <div class="col-md-9 pane pane-two" id="read">
+
+
+            <div ng-if="selected_user" class="pane-header tiptext">
+
+                <button ng-if="deviceIsCordova" class=" glyphicon glyphicon-arrow-left backBtn"
+                        ng-click="back()"></button>
+
+                <img ng-if="selected_user.value || selected_user.profile" class="user-profile-photo" id="readImg"
+                     ng-mouseover="getUserProfile(selected_user, '#readImg')"
+                     ng-src="{{selected_user.pilot.profile.image  || selected_user.value.image || selected_user.profile.image || 'images/user-01.png' }}"
+                     tabindex="0"
+                     data-placement="bottom"
+                     data-toggle="tooltip"
+                     role="button"
+                     data-trigger="hover"/>
+                <img ng-if="selected_user.value == null && !selected_user.profile" class="user-profile-photo"
+                     ng-src='images/user-01.png'/>
+
+                <!--<img ng-if="selected_user" class="user-profile-photo" ng-click="getUserProfile(selected_user)"-->
+                <!--ng-src="{{selected_user.pilot.profile.image  || selected_user.value.image || selected_user.profile.image || 'images/user-01.png' }}"/>-->
+                <span class=" text-center msgPagetxt ">{{selected_user.profile.name ||
+                    selected_user.value.name || "Pilot Connect User"}}</span>
+            </div>
+
+
+            <div class="pane-two-body" id="pane-view">
+                <div ng-if="selected_user">
+                    <div ng-if="messages" class="msg">
+                        <div class="msgContent" id="ReadView">
+                            <div ng-repeat="msg in messages">
+                                <div class="row inbox" ng-if="msg.value.type =='inbox' ">
+                                    <div class="inbox-item">
+                                        <div class=" inboxMsg">{{msg.value.msgtext}}</div>
+                                        <div class=" time">{{msg.value.timestamp | date : 'hh:mm'}}</div>
+                                    </div>
+                                </div>
+
+                                <div class="row outbox" ng-if="msg.value.type =='outbox'">
+                                    <div class="outbox-item">
+                                        <div class=" outboxMsg">{{msg.value.msgtext}}</div>
+                                        <div class=" time">{{msg.value.timestamp | date : 'hh:mm'}}</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class=" reply">
+                            <form ng-if="selected_user.value|| selected_user.profile" name="replyForm" novalidate
+                                  ng-submit="reply(msgtext)">
+                                <!--<input id="msgTextArea" type="text" ng-model="msgtext" placeholder="Write a Message" class="reply-text" />-->
+                                <textarea id="msgTextArea" ng-model="msgtext" placeholder="Write a Message"
+                                          class="reply-text"
+                                          ng-keyup="$event.keyCode == 13 ? reply(msgtext) : null"></textarea>
+                                <input class="submitMsg text-center" id="SendBtn" type="submit" value="Send"
+                                       ng-disabled="replyForm.$invalid"/>
+                            </form>
+                            <div ng-if="!selected_user.value || !selected_user.profile" class="cannotReply">You Cannot
+                                Reply to this User.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div ng-if="!selected_user" class="noMsg">
+                    Please select a user to send or view messages !
+                </div>
+            </div>
+        </div>
+        <!-- Message Read View End-->
+
+        <div style="display:none;">
+            <div id="profileTitle">
+                <div class="text-center pfInfoTitle">
+                    <span ng-if="profileInfo.name">{{profileInfo.name}}</span>
+                </div>
+            </div>
+
+            <div id="userProfile">
+                <!--<div class="closeUserProfile icon glyphicon glyphicon-remove" ng-click="closeUserProfile()"></div>-->
+                <div class="userProfile">
+                    <div class="row">
+                        <div class="col-md-4 text-center info-col">
+                            <img class="getUserProfileImg"
+                                 ng-src="{{profileInfo.image || profileInfo.image || 'images/user-01.png'}}"/>
+                        </div>
+                        <div class="col-md-8 info-col">
+                            <div class="pilot_abstract pilot_profileinfo" ng-if="profileInfo.info">
+                                <span>{{profileInfo.info | limitTo: 250}}...</span>
+                            </div>
+                            <div class="pilot_abstract pilot_profileinfo" ng-if="!profileInfo.info">
+                                <span>Pilot Info not Available.</span>
+
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row info-table ">
+                        <table>
+                            <tr ng-if="profileInfo.location">
+                                <td><span tooltip="Location"
+                                          class="icon glyphicon glyphicon-map-marker"> </span>
+                                </td>
+                                <td>
+                                    <info>Location :{{profileInfo.location}}</info>
+                                </td>
+                            </tr>
+                            <tr ng-if="profileInfo.email">
+                                <td><span tooltip="Email" class="icon glyphicon glyphicon-envelope"></span></td>
+                                <td>
+                                    <info>Email : {{profileInfo.email}}</info>
+                                </td>
+                            </tr>
+                            <tr ng-if="profileInfo.phone">
+                                <td><span tooltip="Phone" class="icon glyphicon glyphicon-earphone"></span></td>
+                                <td>
+                                    <info>Phone : {{profileInfo.phone}}</info>
+                                </td>
+                            </tr>
+                            <tr ng-if="profileInfo.skype">
+                                <td><span tooltip="Skype" class="icon fa fa-skype"></span></td>
+                                <td>
+                                    <info>Skype : {{profileInfo.skype}}</info>
+                                </td>
+                            </tr>
+                            <tr ng--if="profileInfo.facebook">
+                                <td><span tooltip="Facebook" class="icon fa fa-facebook"></span></td>
+                                <td>
+                                    <info>Facebook : {{profileInfo.facebook}}</info>
+                                </td>
+                            </tr>
+                            <tr ng-if="profileInfo.twitter">
+                                <td><span tooltip="Twitter" class="icon fa fa-twitter"></span></td>
+                                <td>
+                                    <info>Twitter : {{profileInfo.twitter}}</info>
+                                </td>
+                            </tr>
+                            <tr ng-if="profileInfo.instagram">
+                                <td><span tooltip="Instagram" class="icon fa fa-instagram"></span></td>
+                                <td>
+                                    <info>Instagram : {{profileInfo.instagram}}</info>
+                                </td>
+                            </tr>
+                            <tr ng-if="profileInfo.type">
+                                <td><span tooltip="Type" class="icon glyphicon glyphicon-plane"></span></td>
+                                <td>
+                                    <info>Type : {{profileInfo.type}}</info>
+                                </td>
+                            </tr>
+                            <tr ng-if="profileInfo.ratings">
+                                <td><span tooltip="Pilot Rating"
+                                          class="icon glyphicon glyphicon-star-empty"></span>
+                                </td>
+                                <td>
+                                    <info>Ratings : {{profileInfo.ratings}}</info>
+                                </td>
+                            </tr>
+                            <tr ng-if="profileInfo.category">
+                                <td><span tooltip="Category" class="icon glyphicon glyphicon-flag"></span></td>
+                                <td>
+                                    <info>Category : {{profileInfo.category}}</info>
+                                </td>
+                            </tr>
+                        </table>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

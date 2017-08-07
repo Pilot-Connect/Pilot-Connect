@@ -1,0 +1,38 @@
+<div class="modal-header deleteHeader">
+    <button type="button" class="close" ng-click="$close()">
+        <span aria-hidden="true">×</span>
+        <span class="sr-only">Close</span>
+    </button>
+    <div>Do you want to Delete Your Account?</div>
+</div>
+</div>
+
+<div class="modal-body modal-simplelogin">
+    <form>
+        <div ng-if="provider == 'password' ">
+            <div class="item text-center tdf-text">
+                Please enter your password to delete your account.
+            </div>
+            <div class="item text-center">
+                <input class="profile-edit-inputs" name="oldPass" type="password" ng-model="pass"
+                       placeholder=" Password">
+                <div ng-show="err.pass" class="error">This field is required</div>
+            </div>
+            <div class="item">
+                <p class="text-center ">
+                    <a ng-click="deleteUser(pass)" class="btn btn-danger btn-delete-account ">Delete Account</a>
+                    <a ng-click="$close()" class="btn btn-primary ">Cancel</a>
+                </p>
+            </div>
+        </div>
+        <div ng-if="provider !== 'password' ">
+            <div class="item">
+                <p class="text-center ">
+                    <a ng-click="deleteUser('social')" class="btn btn-danger btn-delete-account ">Delete Account</a>
+                    <a ng-click="$close()" class="btn btn-primary ">Cancel</a>
+                </p>
+            </div>
+        </div>
+
+    </form>
+</div>

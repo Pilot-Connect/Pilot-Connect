@@ -1,0 +1,21 @@
+
+<div class='form-group'>
+    <textarea class="aboutme-txt" ng-model="profile.info"
+              placeholder="Tell us a bit about yourself such as what type of airplane you typically fly and where"
+              onfocus="this.placeholder = ''"
+              onblur="this.placeholder = 'Tell us a bit about yourself such as what type of airplane you typically fly and where'"></textarea>
+</div>
+<div class='form-group'>
+    <textarea class="dream-txt" ng-model="profile.dream" placeholder="What is your dream flight?"
+              onfocus="this.placeholder = ''" onblur="this.placeholder = 'What is your dream flight?'"></textarea>
+</div>
+<div class="profile-footer">
+    <div class="form-group row">
+            <a ng-click="changestate(2)" class="btn next-section">
+                BACK
+            </a>
+            <a ng-click="changestate(4)" class="btn next-section">
+                NEXT
+            </a>
+    </div>
+</div>

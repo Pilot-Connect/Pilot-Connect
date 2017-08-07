@@ -1,0 +1,185 @@
+<div class="home-container">
+    <div class="join-us">
+        <!--<img class="home-bg" src="images/home-bg-2.jpg" alt="Home"/>-->
+        <img class="home-bg" src="/images/shutterstock_2659802.jpg" alt="Home"/>
+        <div class="home-top-banner">
+            <span>Find, connect, and fly with local pilots</span><br/>
+            <!--<span>We are a global community of pilots that want to connect and fly together</span>-->
+            <div>
+                <button ng-click="openRegisterModal()">Join Us</button>
+                <!--<div class="tour" data-toggle="modal"-->
+                     <!--data-target="#modal-fullscreen">Take a tour-->
+                <!--</div>-->
+            </div>
+        </div>
+
+    </div>
+    <div class="connect-pilot">
+        <div class="first-content">
+            <div class="top-img col-md-6">
+                <div class="round-img">
+                    <img class="top-div" src="images/img4.jpg" alt="Connect"/>
+                </div>
+
+                <div class="shadow"></div>
+            </div>
+            <div class="top-content col-md-6">
+                <h3>
+                    Meet other pilots
+                </h3>
+                <p>
+                    Steve was traveling to California with his
+                    girlfriend and wanted to see San Francisco by air.
+                    He connected with a Bay Area pilot and had an
+                    unforgettable experience.
+                </p>
+            </div>
+        </div>
+
+        <div class="first-content">
+
+            <div class="top-content col-md-6">
+                <h3>
+                    Discover new experiences
+                </h3>
+                <p>
+                    Alan was traveling to Montana and wanted to
+                    see what flying experiences were available. He
+                    found a commercial outfitter offering seaplane
+                    lessons and is now hooked.
+                </p>
+            </div>
+            <div class="top-img col-md-6">
+                <div class="round-img"><img class="top-div" src="images/img3.jpg" alt="Connect"/></div>
+
+                <div class="shadow"></div>
+            </div>
+
+        </div>
+
+        <div class="first-content">
+            <div class="top-img col-md-6">
+                <div class="round-img"><img class="top-div" src="images/img2.jpg" alt="Connect"/></div>
+
+                <div class="shadow"></div>
+            </div>
+            <div class="top-content col-md-6">
+                <h3>
+                    Build a community
+                </h3>
+                <p>
+                    When traveling with his family, Dan reached out
+                    to a local pilot to see if there were any
+                    interesting events going on. There happened to
+                    be an airshow that weekend and the two
+                    coordinated to meet one another.
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="slider-container">
+        <h1 ng-click="openRegisterModal()">
+            JOIN THE PILOT CONNECT COMMUNITY
+        </h1>
+        <div class="slides">
+            <img class="slider-img" src="images/slide1.jpg" alt=""/>
+
+
+            <img class="slider-img" src="images/slide2.jpg" alt=""/>
+
+
+            <img class="slider-img" src="images/slide3.jpg" alt=""/>
+
+
+            <img class="slider-img" src="images/slide4.jpg" alt=""/>
+
+            <img class="slider-img" src="images/slide5.jpg" alt=""/>
+        </div>
+
+
+    </div>
+
+    <!--<hr class="footer-divider space-top-8 space-4 hide-sm">-->
+
+
+    <div id="" class="footer">
+
+        <div class="company">
+            <div class="text-center">
+                <!--<h2 class="h5 space-4 hide-sm">Join Us On</h2>-->
+                <div class="company_links"><a href="#/policies">Policies</a></div>
+                <div class="footer-join-us">
+                    <h3>Join Us On</h3>
+                    <div class="social-links">
+                        <ul class="social-list-items">
+                            <li>
+                                <a href="{{urls.facebook}}"
+                                   target="_blank">
+                                    <i class="footer-icon icon-facebook fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{urls.twitter}}" target="_blank">
+                                    <i class="footer-icon icon-facebook fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{urls.instagram}}" target="_blank">
+                                    <i class="footer-icon icon-facebook fa fa-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- <div class="company_head"> Company</div>
+            <div class="company_links"><a href="#/about"> About</div>
+            <div class="company_links"> <a href="#/contact">Contact Us</a></div> -->
+
+        </div>
+    </div>
+</div>
+
+<!-- <div class="home loginPage"  ng-show="popup">
+
+
+    <div class="overlay" ng-click="closeToggleLayoutPopup()" ng-show="over" >
+
+    </div>
+    
+</div> -->
+
+<!-- Modal fullscreen -->
+<div class="modal modal-fullscreen fade" id="modal-fullscreen" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true" backdrop="static" keyboard="false">
+  <!--  <div class="modal-dialog modal-dialog-full">
+        <div class="modal-content">-->
+
+            <!--<div class="modal-body modal-body-full">-->
+                <button type="button" class="close closeTour" data-dismiss="modal"><span
+                        aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <div class="viewContainer">
+
+                    <video id="videoTour" class="tourVideo" ng-src={{tourVideoUrl}} ng-click="playPauseVideo()"
+                           autoplay mute>
+                        Your browser does not support this video.
+                    </video>
+                    <button ng-if="!videoPlaying" class="btn glyphicon glyphicon-play playBtn"
+                            ng-click="playPauseVideo()"></button>
+                </div>
+
+            <!--</div>-->
+<!--        </div>
+    </div>-->
+
+</div>
+
+
+
+

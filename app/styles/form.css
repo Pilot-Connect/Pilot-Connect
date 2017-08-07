@@ -1,0 +1,580 @@
+/* BASIC STYLINGS
+============================================================================= */
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('../fonts/HelveticaNeue/HelveticaNeue.eot');
+    /*src: url('Distant_Stroke_Medium.eot');*/
+    src: url('../fonts/HelveticaNeue/HelveticaNeue.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/HelveticaNeue/HelveticaNeue.otf')  format('opentype'),
+    url('../fonts/HelveticaNeue/HelveticaNeue.woff2') format('woff2'),
+    url('../fonts/HelveticaNeue/HelveticaNeue.woff') format('woff'),
+    url('../fonts/HelveticaNeue/HelveticaNeue.ttf')  format('truetype'),
+    url('../fonts/HelveticaNeue/HelveticaNeue.svg') format('svg');
+}
+
+@font-face {
+    font-family: 'HelveticaNeueThin';
+    src: url('../fonts/HelveticaNeue/HelveticaNeue-Thin.eot');
+    /*src: url('Distant_Stroke_Medium.eot');*/
+    src: url('../fonts/HelveticaNeue/HelveticaNeue-Thin.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/HelveticaNeue/HelveticaNeue-Thin.otf')  format('opentype'),
+    url('../fonts/HelveticaNeue/HelveticaNeue-Thin.woff2') format('woff2'),
+    url('../fonts/HelveticaNeue/HelveticaNeue-Thin.woff') format('woff'),
+    url('../fonts/HelveticaNeue/HelveticaNeue-Thin.ttf')  format('truetype'),
+    url('../fonts/HelveticaNeue/HelveticaNeue-Thin.svg') format('svg');
+}
+
+
+.background-image{
+    background-image: url(../images/home-bg-2.jpg);
+    position: fixed;
+    height:100%;
+    width:100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover ;
+    -webkit-filter: blur(16px); /* Chrome, Safari, Opera */
+    filter: blur(16px);
+    opacity: 0.55;
+    z-index: -1;
+}
+
+/* form styling */
+.form-container{
+    width: 100%;
+}
+
+.form-content {
+    width: 900px;
+    margin : auto;
+}
+#signup-form{
+    position: relative;
+    min-height: 550px;
+    height: 100%;
+    margin:auto;
+}
+.profile-footer{
+    /*position: absolute;*/
+    /*bottom:0px;*/
+    /*width: 100%;*/
+}
+.profile-inputs ,input[type="text"].profile-inputs , input[type="email"].profile-inputs, select.profile-inputs{
+    height: 37px;
+    width:35%;
+    line-height: 1.846;
+    background-color: transparent;
+    border-bottom: 1px solid black;
+    /*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);*/
+    /*box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);*/
+    text-align: center;
+    padding: 4px;
+    color: black;
+    margin: 20px 10px;
+    font-size: 18px;
+
+}
+.profile-names{
+    width: 80%;
+    margin: auto;
+}
+
+input[type="text"].fname , input[type="text"].lname{
+    height: 37px;
+    width:90%;
+    line-height: 1.846;
+    background-color: transparent;
+    border-bottom: 1px solid black;
+    /*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);*/
+    /*box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);*/
+    text-align: center;
+    padding: 4px;
+    color: black;
+    margin: 20px 10px;
+    font-size: 18px;
+}
+
+#status-buttons {
+    margin: 25px 0 0 0;
+    display: inline-flex;
+}
+
+
+input[type="text"].profile-inputs {
+    padding: 20px;
+}
+
+input[type="checbox"]{
+    color: black;
+    margin: 20px 10px;
+    font-size: 18px;
+}
+.aboutme-txt{
+    width: 85%;
+    min-height:150px;
+    height:100%;
+}
+.dream-txt{
+    width: 85%;
+    min-height:80px;
+    height:100%;
+}
+
+.user-profile {
+    background-color: #757575;
+    width: 155px;
+    margin-left: 40px;
+    padding:2px;
+    height:155px;
+}
+
+#addpfimg{
+    height:150px;
+    width: 150px;
+}
+
+.prop_img{
+    width : 25%;
+    height: 20%;
+    padding: 0 20px;
+}
+
+.profile-upload-image{
+    position: relative;
+    font-size: x-large;
+    font-weight: normal;
+    color: black;
+    right: 45px;
+    top: 55px;
+    width: 30px;
+    height: 30px;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+
+textarea{
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+input{
+    padding:10px;
+}
+
+textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
+    color: #4B4B4B !important;
+    font-size: 14px;
+    /*font-family: "Helvetica Neue Regular";*/
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    font-family: "HelveticaNeue";
+}
+
+textarea::-moz-placeholder ,input:-moz-placeholder { /* Firefox 18- */
+    color: #4B4B4B !important;
+    font-size: 14px;
+    /*font-family: "Helvetica Neue Regular";*/
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    font-family: "HelveticaNeue";
+}
+
+textarea::-moz-placeholder, input::-moz-placeholder {  /* Firefox 19+ */
+    color: #4B4B4B !important;
+    font-size: 14px;
+    /*font-family: "Helvetica Neue Regular";*/
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    font-family: "HelveticaNeue";
+}
+
+input:-ms-input-placeholder {
+    color: #4B4B4B !important;
+    font-size: 14px;
+    /*font-family: "Helvetica Neue Regular";*/
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    font-family: "HelveticaNeue";
+}
+.form-safety{
+    font-weight: normal;
+    padding: 4px;
+    color: #4B4B4B;
+    font-size: 14px;
+    font-family: "HelveticaNeue";
+}
+.form-safety input{
+    color: black;
+    font-size: 18px;
+}
+.profile-choices-group{
+    position: relative;
+    width: 100%;
+    left: 30%;
+    text-align: left;
+    padding : 20px;
+}
+.editProfile-radio-group{
+    /*left: 13%;*/
+}
+.form-checkbox{
+    text-align: left;
+}
+.form-checkbox input[type="checkbox"]:after {
+    box-shadow: 3px 3px 0px 1px black;
+}
+.form-checkbox span{
+    font-weight: 600;
+    padding: 2px;
+    /*color: #4B4B4B;*/
+    font-size: 14px;
+    font-family: "HelveticaNeue";
+    padding:2px;
+    text-align: left;
+    color: #111;
+}
+.form-radio-txt{
+    font-weight: normal;
+    /*color: #4B4B4B;*/
+    font-size: 14px;
+    font-family: "HelveticaNeue";
+    padding:2px;
+    text-align: left;
+    color: #111;
+}
+.form-selection-txt{
+    font-weight: 700;
+    padding: 4px;
+    /*color: #4B4B4B;*/
+    font-size: 17px;
+    font-family: "HelveticaNeue";
+    text-align: left;
+    color: #111;
+}
+.help-txt{
+    font-size: 16px;
+    color: black;
+    font-weight: normal;
+    padding: 4px;
+    font-family: "HelveticaNeue";
+    text-align: center;
+    padding:2px;
+    font-weight: bold;
+    text-align: left;
+}
+.rep-txt{
+    font-size: 12px;
+    font-weight: normal;
+    padding: 4px;
+    color: #4B4B4B;
+    font-family: "HelveticaNeue";
+    text-align: center;
+    padding:2px;
+    text-align: left;
+}
+
+.help-radio{
+    margin-left: 30px;
+}
+.next-section{
+    font-weight:500;
+    margin-top: 20px;
+    background-color: #2996FF;
+    color: #ffffff;
+    border-radius: 200px;
+    width:155px;
+    padding:12px;
+}
+.CompleteProfile{
+    font-weight: 500;
+    margin-top: 20px;
+    background-color: #2996FF;
+    color: #ffffff;
+    border-radius: 200px;
+    width:155px;
+    padding:12px;
+}
+.CompleteProfile:disabled {
+    /*background-color: red;*/
+}
+.add-airport{
+    font-weight:bold;
+    color: #2996FF;
+    background-color: transparent ;
+    width:155px;
+    padding:12px;
+    border-radius: 200px;
+    /*font-family: "Helvetica Neue Thin";*/
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    font-family: "HelveticaNeue";
+    font-size: 20px;
+    border: none;
+    background: none;
+}
+
+.places-inputs{
+    width:46%;
+    margin: auto;
+}
+.places-inputs input{
+    height: 37px;
+    width:56%;
+    line-height: 1.846;
+    background-color: transparent;
+    border-bottom: 1px solid black;
+    /*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);*/
+    /*box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);*/
+    text-align: center;
+    padding: 4px;
+    color: black;
+    margin: 8px;
+    font-size: 18px;
+}
+
+.remove-airport{
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    background: transparent;
+    border:none;
+
+}
+.profile-head{
+    font-family: HelveticaNeue;
+    font-size: 42px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: 2px;
+    color: #2996ff;
+    margin: 15px auto;
+}
+
+
+
+
+
+
+
+
+/*----------profile forms device------------*/
+
+/*Edit Profile*/
+.profile-form-content{
+    /*width: 90%;*/
+    width:1170px;
+    margin : auto;
+}
+#profile-content{
+    margin: auto;
+}
+.names{
+    width: 76%;
+    margin: auto;
+}
+.profile-edit-Txt {
+    /*position: relative;*/
+    width: 70%;
+    /*left: 15%;*/
+    display: block;
+    height: 100px;
+    padding: 6px 16px;
+    font-size: 14px;
+    line-height: 1.846;
+    /*color: #666666;*/
+    color: #000;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    margin: auto;
+    /*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);*/
+    /*box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);*/
+    /*-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;*/
+    /*-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;*/
+    /*transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;*/
+}
+
+@media only screen and (max-width:992px){
+    #profile .col-md-6 {
+        width: 50%;
+        float: left;
+    }
+    #profile input[type="text"].fname-edit, input[type="text"].lname-edit {
+        width: 249PX;
+    }
+}
+/*Delete Account*/
+.delete-account {
+    margin-top: 30px;
+    float: left;
+    width: 100%;
+    /*margin-bottom: 20px;*/
+    /* font-weight: bold; */
+    border-top: 1px solid #cacaca;
+    padding-top: 20px;
+}
+.delete-account span {
+    font-size: 20px;
+    width: 100%;
+    float: left;
+    text-align: center;
+    /*margin-bottom: 20px;*/
+    /* font-weight: bold; */
+    color: #f00;
+}
+.btn-delete-account {
+    font-weight: bold;
+}
+.tdf-text, .tdf-text:hover, .tdf-text:focus{
+    text-decoration: none;
+    color: #2996FF;
+    cursor: default;
+}
+
+.delete-container {
+
+}
+.deleteHeader{
+    background-color: #e51c23;
+    color: #fff;
+    font-family: "HelveticaNeue";
+    font-size: 18px;
+}
+/*Delete Account*/
+
+/* New edit profile*/
+
+.profile-choices-group.editProfile-radio-group.contact-safety-pilots {
+    padding: 17px 0px;
+    width: 70%;
+    margin: auto;
+    position: initial;
+}
+.add-profile-img.profile-mylocations.ng-scope {
+    width: 70%;
+    margin: auto;
+}
+.delete-defying-container .delete-account {
+    margin-bottom: 32px;
+    margin-top: 14px;
+}
+.delete-defying-container .delete-account span {
+    margin-bottom: 16px;
+}
+
+@media only screen and (max-width:1200px){
+    .profile-form-content {
+        width: 100%;
+    }
+}
+
+/*----------profile forms device------------*/
+
+@media (min-width:120px) and  (max-width:1024px) {
+    .form-content {
+        width:96%;
+        margin: auto;
+    }
+    input[type="text"].profile-inputs , input[type="email"].profile-inputs,  select.profile-inputs{
+        height: 70px;
+        width:70%;
+
+    }
+    .profile-inputs{
+        height: 70px;
+        width:100%;
+    }
+    input[type="text"].fname , input[type="text"].lname{
+        height: 70px;
+        width:70%;
+    }
+
+    .profile-choices-group{
+        width: 100%;
+        left: 12%;
+    }
+    .editProfile-radio-group{
+        left: 10%;
+    }
+    .add-airport {
+        width: 255px;
+    }
+    .places-inputs {
+        width: 100%;
+        margin: auto;
+    }
+    .places-inputs input{
+        height: 70px;
+        width:70%;
+
+    }
+}
+
+@media only screen and (max-width:767px){
+    .profile-choices-group {
+        left: 0px;
+    }
+    .profile-head {
+        font-size: 23px;
+    }
+    .delete-account span {
+        font-size: 11px;
+    }
+    .profile-inputs{
+        height: auto;
+    }
+    .add-profile-img.profile-mylocations.ng-scope {
+        width: 92%;
+        margin: auto;
+    }
+    .profile-choices-group.editProfile-radio-group.contact-safety-pilots {
+        width: 100%;
+    }
+    .form-radio-txt {
+        font-size: 12px;
+    }
+    .delete-account {
+        width: 92%;
+    }
+    .help-radio {
+        margin-left: 0px;
+    }
+    .rep-txt {
+        font-size: 10px;
+    }
+     input[type="text"].profile-inputs, input[type="email"].profile-inputs{
+         height: auto;
+         width: 100%;
+         margin: auto;
+     }
+    .names {
+        width: 100%;
+    }
+    input[type="text"].fname, input[type="text"].lname {
+        height: auto;
+        width: 100%;
+        margin: auto;
+    }
+    select.profile-inputs {
+        height: 40px;
+        width: 100%;
+        margin: auto;
+    }
+    .profile-edit-Txt {
+        width: 100%;
+    }
+    #profile-content {
+        position: initial;
+        height: 100%;
+        width: 100%;
+        left: 0px;
+        -webkit-transform: initial;
+        width: 84%;
+        margin: auto;
+    }
+}
